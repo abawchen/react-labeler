@@ -1,0 +1,42 @@
+{
+  "name": "annotator",
+  "version": "0.0.1",
+  "description": "React image annotator component",
+  "main": "./app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --devtool eval --progress --colors --content-base build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abawchen/annotator.git"
+  },
+  "keywords": [
+    "react",
+    "image",
+    "annotation",
+    "annotator",
+    "label"
+  ],
+  "author": "Abaw Chen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abawchen/annotator/issues"
+  },
+  "homepage": "https://github.com/abawchen/annotator#readme",
+  "dependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.8.1",
+    "webpack-cli": "^2.1.3",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
