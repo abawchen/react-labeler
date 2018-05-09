@@ -9,6 +9,10 @@ class Annotator extends React.Component {
     };
   }
 
+  onMouseDown = () => {
+    console.log('onMouseDown');
+  }
+  
   render() {
     return (
       <div
