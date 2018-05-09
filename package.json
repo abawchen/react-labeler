@@ -5,7 +5,7 @@
   "main": "./app/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --devtool eval --progress --colors --content-base build"
+    "dev": "webpack-dev-server --mode=development --devtool eval --progress --colors --content-base build"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,12 @@
     "immutable": "^3.8.2",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-router": "^4.2.0"
+    "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "redux": "^4.0.0",
+    "redux-actions": "^2.3.2",
+    "redux-immutable": "^4.0.0",
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
