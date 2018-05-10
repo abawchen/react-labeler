@@ -6,7 +6,7 @@ export const AnnotatorState = Immutable.fromJS({
   'annotations': [],
   'annotation': {
     id: '',
-    label: 'labelme',
+    label: 'labelme&you',
     shape: '',
     points: [],
     completed: false
