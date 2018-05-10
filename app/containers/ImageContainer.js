@@ -7,8 +7,10 @@ import {
 
 const mapStateToProps = (state) => {
   const annotationState = state.get('annotation');
+  console.log(annotationState);
   return {
     src: annotationState.get('src'),
+    annotation: annotationState.get('annotation'),
     annotations: annotationState.get('annotations'),
   }
 }

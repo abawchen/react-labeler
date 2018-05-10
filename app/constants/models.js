@@ -1,11 +1,12 @@
 import Immutable from 'immutable';
 
 export const AnnotationState = Immutable.fromJS({
-  'src': '',
+  // TODO: Remove seeding value
+  'src': 'https://goo.gl/9nhdu1',
   'annotations': [],
   'annotation': {
     id: '',
-    label: '',
+    label: 'labelme',
     shape: '',
     points: [],
     completed: false

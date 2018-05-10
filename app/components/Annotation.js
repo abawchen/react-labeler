@@ -36,12 +36,32 @@ class Annotation extends React.Component {
   }
 }
 */
-const temp = 'https://goo.gl/9nhdu1';
+// TODO: Move to css?
+const imageDivStyle = {
+  clear: 'both',
+  position: 'relative',
+  width: '100%'
+}
+
 const Annotation = ({
-  src
+  src,
+  annotation,
+  annotations
 }) => (
-  <div>
+  <div style={imageDivStyle}>
     <img src={src}/>
+    {
+      annotations.map((annotation, index) => (
+        <div>
+          {annotation.label}
+        </div>
+      )).toJS()
+    }
+    <div style={{
+      position: 'absolute'
+    }}>
+      {annotation.get('label')}
+    </div>
   </div>
 )
 
