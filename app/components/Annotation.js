@@ -11,15 +11,22 @@ const Annotation = ({
     left: 0,
     top: 0
   }}>
-    {
-      annotation.get('points').map((point, index) =>
-        <Point key={index} point={point}/>  
-      ) 
-    }
     <polygon
       points={annotation.get('points').toJS()}
-    >
-    </polygon>
+    />
+    {
+      annotation.get('points').map((point, index) =>
+        //<Point key={index} point={point}/>
+        <circle
+          key={index}
+          cx={point.get(0)}
+          cy={point.get(1)}
+          r='5'
+          stroke='black'
+          fill='red'
+        />
+      ) 
+    }
     {annotation.get('label')}
   </svg>
 )
