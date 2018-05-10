@@ -29,12 +29,9 @@ const Annotator = ({
     <img src={src}/>
     {
       annotations.map((annotation, index) => (
-        <div>
-          {annotation.label}
-        </div>
+        <Annotation key={index} annotation={annotation}/>
       )).toJS()
     }
-    <Annotation annotation={annotation}/>
   </div>
 )
 
