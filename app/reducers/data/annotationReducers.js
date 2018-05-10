@@ -1,16 +1,16 @@
 import { handleActions } from 'redux-actions';
-import { AnnotationState } from '../../constants/models';
+import { AnnotatorState } from '../../constants/models';
 import {
   CRAETE
 } from '../../constants/actionTypes';
 
-const annotationReducers = handleActions(
+const annotatorReducers = handleActions(
   {
     CREATE: (state) => {
       let annotations = state.get('annotations').push(state.get('annotation'));
       return state.set('annotations', annotations);
     }
   },
-  AnnotationState
+  AnnotatorState
 );
-export default annotationReducers;
+export default annotatorReducers;

@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
-import Annotation from '../components/Annotation';
+import Annotator from '../components/Annotator';
 
 import {
   addPoint
 } from '../actions';
 
 const mapStateToProps = (state) => {
-  const annotationState = state.get('annotation');
-  console.log(annotationState);
+  const annotatorState = state.get('annotator');
+  console.log(annotatorState);
   return {
-    src: annotationState.get('src'),
-    annotation: annotationState.get('annotation'),
-    annotations: annotationState.get('annotations'),
+    src: annotatorState.get('src'),
+    annotation: annotatorState.get('annotation'),
+    annotations: annotatorState.get('annotations'),
   }
 }
 
@@ -26,6 +26,6 @@ const mapDispatchToProps = (dispatch) => {
 const Annotations = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Annotation);
+)(Annotator);
 
 export default Annotations;

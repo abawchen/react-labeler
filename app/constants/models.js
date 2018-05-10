@@ -1,6 +1,6 @@
 import Immutable from 'immutable';
 
-export const AnnotationState = Immutable.fromJS({
+export const AnnotatorState = Immutable.fromJS({
   // TODO: Remove seeding value
   'src': 'https://goo.gl/9nhdu1',
   'annotations': [],
