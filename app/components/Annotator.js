@@ -9,10 +9,22 @@ class Annotator extends React.Component {
     };
   }
 
-  onMouseDown = () => {
-    console.log('onMouseDown');
+  getCursorPosition = (e) => {
+    /* https://github.com/svrcekmichal/react-sketchpad/blob/master/src/SketchPad.jsx
+    const {top, left} = this.canvas.getBoundingClientRect();
+    return [
+      e.clientX - left,
+      e.clientY - top
+    ];
+    */
+    return [e.pageX, e.pageY];
   }
-  
+
+  onMouseDown = (e) => {
+    console.log('onMouseDown');
+    console.log(this.getCursorPosition(e));
+  }
+
   render() {
     return (
       <div
