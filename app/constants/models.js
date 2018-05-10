@@ -18,8 +18,8 @@ export const AnnotatorState = Immutable.fromJS({
       'shape': 'polygon',
       'points': [
         [100, 100],
-        [110, 110],
-        [120, 120]
+        [130, 110],
+        [120, 140]
       ]
     }
   ],

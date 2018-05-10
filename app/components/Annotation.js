@@ -6,7 +6,7 @@ import Point from './Point';
 const Annotation = ({
   annotation
 }) => (
-  <div style={{
+  <svg style={{
     position: 'absolute',
     left: 0,
     top: 0
@@ -16,8 +16,12 @@ const Annotation = ({
         <Point key={index} point={point}/>  
       ) 
     }
+    <polygon
+      points={annotation.get('points').toJS()}
+    >
+    </polygon>
     {annotation.get('label')}
-  </div>
+  </svg>
 )
 
 export default Annotation;
