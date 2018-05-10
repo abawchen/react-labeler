@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Annotator extends React.Component {
+/*
+class Annotation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,13 +11,12 @@ class Annotator extends React.Component {
   }
 
   getCursorPosition = (e) => {
-    /* https://github.com/svrcekmichal/react-sketchpad/blob/master/src/SketchPad.jsx
-    const {top, left} = this.canvas.getBoundingClientRect();
-    return [
-      e.clientX - left,
-      e.clientY - top
-    ];
-    */
+    // https://github.com/svrcekmichal/react-sketchpad/blob/master/src/SketchPad.jsx
+    // const {top, left} = this.canvas.getBoundingClientRect();
+    // return [
+    //   e.clientX - left,
+    //   e.clientY - top
+    // ];
     return [e.pageX, e.pageY];
   }
 
@@ -35,5 +35,14 @@ class Annotator extends React.Component {
     );
   }
 }
+*/
+const temp = 'https://goo.gl/9nhdu1';
+const Annotation = ({
+  src
+}) => (
+  <div>
+    <img src={src}/>
+  </div>
+)
 
-export default Annotator;
+export default Annotation;

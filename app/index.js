@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import store from './store';
-import Annotator from './components/Annotator';
+import Main from './components/Main';
+//import Annotation from './components/Annotation';
 
 /*
 class App extends React.Component {
@@ -27,7 +28,7 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <Annotator />
+        <Main />
       </Provider>
     )
   }

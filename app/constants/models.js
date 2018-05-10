@@ -1,6 +1,7 @@
 import Immutable from 'immutable';
 
-export const AnnotatorState = Immutable.fromJS({
+export const AnnotationState = Immutable.fromJS({
+  'src': '',
   'annotations': [],
   'annotation': {
     id: '',
@@ -8,5 +9,13 @@ export const AnnotatorState = Immutable.fromJS({
     shape: '',
     points: [],
     completed: false
+  },
+  'point': {
+    x: 0,
+    y: 0
+  },
+  'line': {
+    start: [],
+    end: []
   }
-})
+});
