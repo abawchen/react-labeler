@@ -10,6 +10,8 @@ import {
 
 const mapStateToProps = (state) => {
   const annotatorState = state.get('annotator');
+  // const annotatorState = state;
+  // console.log(annotatorState);
   return {
     src: annotatorState.get('src'),
     annotation: annotatorState.get('annotation'),
@@ -26,10 +28,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(selectPoint({ event }));
     },
     onPointMouseUp: (event) => {
-      dispatch(deselectPoint({ event }));
+      // dispatch(deselectPoint({ event }));
     },
     onPointMouseMove: (event) => {
-      dispatch(movePoint({ event }));
+      // dispatch(movePoint({ event }));
     }
   }
 }

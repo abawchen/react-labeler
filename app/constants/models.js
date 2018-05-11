@@ -5,6 +5,7 @@ export const AnnotatorState = Immutable.fromJS({
   'src': 'https://goo.gl/9nhdu1',
   'annotations': [
     {
+      'id': '1',
       'label': 'first',
       'shape': 'polygon',
       'points': [
@@ -14,6 +15,7 @@ export const AnnotatorState = Immutable.fromJS({
       ]
     },
     {
+      'id': '2',
       'label': 'second',
       'shape': 'polygon',
       'points': [
@@ -25,10 +27,10 @@ export const AnnotatorState = Immutable.fromJS({
   ],
   'annotation': {
     id: '',
-    label: 'labelme&you',
+    label: '',
     shape: '',
-    points: [[10, 10], [20, 20], [30, 30]],
-    completed: true
+    points: [],
+    completed: false
   },
   'point': {
     x: 0,

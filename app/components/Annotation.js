@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import Point from './Point';
 
 const Annotation = ({
+  aix,
   annotation,
   onPointMouseDown,
   onPointMouseUp,
@@ -17,9 +18,12 @@ const Annotation = ({
       annotation.get('points').map((point, index) =>
         <circle
           key={index}
+          data-index={aix}
           cx={point.get(0)}
           cy={point.get(1)}
           r='5'
+          //annotation={dannotation}
+          //point={point}
           onMouseDown={onPointMouseDown}
           onMouseUp={onPointMouseUp}
           onMouseMove={onPointMouseMove}

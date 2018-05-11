@@ -28,6 +28,7 @@ const Annotator = ({
         annotations.map((annotation, index) => (
           <Annotation
             key={index}
+            aix={index}
             annotation={annotation}
             onPointMouseDown={onPointMouseDown}
             onPointMouseUp={onPointMouseUp}
@@ -35,6 +36,13 @@ const Annotator = ({
           />
         )).toJS()
       }
+      /*
+      {
+        <Annotation
+          annotation={annotation}
+        />
+      }
+      */
     </svg>
   </div>
 )
