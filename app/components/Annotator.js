@@ -16,14 +16,23 @@ import Annotation from './Annotation';
 const Annotator = ({
   src,
   annotation,
-  annotations
+  annotations,
+  onCircleMouseDown,
+  onCircleMouseUp,
+  onCircleMouseMove
 }) => (
   <div className='annotatorContainer'>
     <img src={src}/>
     <svg className='ori'>
       {
         annotations.map((annotation, index) => (
-          <Annotation key={index} annotation={annotation}/>
+          <Annotation
+            key={index}
+            annotation={annotation}
+            onCircleMouseDown={onCircleMouseDown}
+            onCircleMouseUp={onCircleMouseUp}
+            onCircleMouseMove={onCircleMouseMove}
+          />
         )).toJS()
       }
     </svg>

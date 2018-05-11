@@ -6,9 +6,11 @@ import {
 
 const annotatorReducers = handleActions(
   {
-    CREATE: (state) => {
-      let annotations = state.get('annotations').push(state.get('annotation'));
-      return state.set('annotations', annotations);
+    SELECT_POINT: (state, { payload }) => {
+      /*
+      console.log(state);
+      console.log(payload.event.clientX, payload.event.clientY);
+      */
     }
   },
   AnnotatorState

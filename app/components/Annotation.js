@@ -4,7 +4,10 @@ import ReactDOM from 'react-dom';
 import Point from './Point';
 
 const Annotation = ({
-  annotation
+  annotation,
+  onCircleMouseDown,
+  onCircleMouseUp,
+  onCircleMouseMove
 }) => (
   <svg className='ori'>
     <polygon
@@ -17,6 +20,9 @@ const Annotation = ({
           cx={point.get(0)}
           cy={point.get(1)}
           r='5'
+          onMouseDown={onCircleMouseDown}
+          onMouseUp={onCircleMouseUp}
+          onMouseMove={onCircleMouseMove}
         />
       )
     }
