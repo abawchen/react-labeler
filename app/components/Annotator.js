@@ -13,19 +13,12 @@ import Annotation from './Annotation';
     return [e.pageX, e.pageY];
 */
 
-// TODO: Move to css?
-const imageDivStyle = {
-  clear: 'both',
-  position: 'relative',
-  width: '100%'
-}
-
 const Annotator = ({
   src,
   annotation,
   annotations
 }) => (
-  <div style={imageDivStyle}>
+  <div className='annotatorContainer'>
     <img src={src}/>
     {
       annotations.map((annotation, index) => (

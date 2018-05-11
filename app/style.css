@@ -1,8 +1,17 @@
+.annotatorContainer {
+    clear: both;
+    position: relative;
+    width: 100%;
+}
+
+/*
 .point {
-    width: 100px;
-	height: 100px;
+    position: absolute;
+    width: 10px;
+	height: 10px;
 	background: red;
 	-moz-border-radius: 50px;
 	-webkit-border-radius: 50px;
-	border-radius: 50px;
+	border-radius: 5px;
 }
+*/
