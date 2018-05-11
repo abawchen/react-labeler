@@ -3,6 +3,14 @@ import { createLogger } from 'redux-logger';
 import Immutable from 'immutable';
 import rootReducer from '../reducers';
 
+/*
+const initialState = Immutable.Map({
+  annotation: Immutable.Map({
+      src: 'https://goo.gl/9nhdu1'
+    })
+});
+*/
+
 const initialState = Immutable.Map();
 
 export default createStore(

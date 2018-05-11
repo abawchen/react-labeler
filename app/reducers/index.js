@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux-immutable';
-import annotation from './data/annotationReducers';
+import annotator from './data/annotationReducers';
 
 const rootReducer = combineReducers({
-  annotation
+  annotator
 });
 
 export default rootReducer;

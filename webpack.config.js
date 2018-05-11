@@ -13,7 +13,7 @@ module.exports = {
   ],
   output: {
     path: `${__dirname}/dist`,
-    filename: 'index_bundle.js',
+    filename: 'bundle.js',
   },
   module: {
     rules: [
@@ -25,6 +25,10 @@ module.exports = {
           presets: ['es2016', 'react', "stage-0"],
         },
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
     ],
   },
   devServer: {
