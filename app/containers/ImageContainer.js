@@ -4,6 +4,8 @@ import Annotator from '../components/Annotator';
 import {
   addPoint,
   selectPoint,
+  deselectPoint,
+  movePoint,
 } from '../actions';
 
 const mapStateToProps = (state) => {
@@ -20,9 +22,15 @@ const mapDispatchToProps = (dispatch) => {
     onAddPoint: (event) => {
       dispatch(addPoint(event));
     },
-    onCircleMouseDown: (event) => {
+    onPointMouseDown: (event) => {
       dispatch(selectPoint({ event }));
     },
+    onPointMouseUp: (event) => {
+      dispatch(deselectPoint({ event }));
+    },
+    onPointMouseMove: (event) => {
+      dispatch(movePoint({ event }));
+    }
   }
 }
 

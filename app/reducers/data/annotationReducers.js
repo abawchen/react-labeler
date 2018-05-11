@@ -11,7 +11,14 @@ const annotatorReducers = handleActions(
       console.log(state);
       console.log(payload.event.clientX, payload.event.clientY);
       */
-    }
+      console.log('SELECT_POINT');
+    },
+    DESELECT_POINT: (state, { payload }) => {
+      console.log('DESELECT_POINT');
+    },
+    MOVE_POINT: (state, { payload }) => {
+
+    },
   },
   AnnotatorState
 );

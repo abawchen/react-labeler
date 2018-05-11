@@ -5,9 +5,9 @@ import Point from './Point';
 
 const Annotation = ({
   annotation,
-  onCircleMouseDown,
-  onCircleMouseUp,
-  onCircleMouseMove
+  onPointMouseDown,
+  onPointMouseUp,
+  onPointMouseMove
 }) => (
   <svg className='ori'>
     <polygon
@@ -20,9 +20,9 @@ const Annotation = ({
           cx={point.get(0)}
           cy={point.get(1)}
           r='5'
-          onMouseDown={onCircleMouseDown}
-          onMouseUp={onCircleMouseUp}
-          onMouseMove={onCircleMouseMove}
+          onMouseDown={onPointMouseDown}
+          onMouseUp={onPointMouseUp}
+          onMouseMove={onPointMouseMove}
         />
       )
     }

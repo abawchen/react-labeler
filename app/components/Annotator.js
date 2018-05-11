@@ -17,9 +17,9 @@ const Annotator = ({
   src,
   annotation,
   annotations,
-  onCircleMouseDown,
-  onCircleMouseUp,
-  onCircleMouseMove
+  onPointMouseDown,
+  onPointMouseUp,
+  onPointMouseMove
 }) => (
   <div className='annotatorContainer'>
     <img src={src}/>
@@ -29,9 +29,9 @@ const Annotator = ({
           <Annotation
             key={index}
             annotation={annotation}
-            onCircleMouseDown={onCircleMouseDown}
-            onCircleMouseUp={onCircleMouseUp}
-            onCircleMouseMove={onCircleMouseMove}
+            onPointMouseDown={onPointMouseDown}
+            onPointMouseUp={onPointMouseUp}
+            onPointMouseMove={onPointMouseMove}
           />
         )).toJS()
       }
