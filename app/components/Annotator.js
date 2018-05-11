@@ -20,11 +20,13 @@ const Annotator = ({
 }) => (
   <div className='annotatorContainer'>
     <img src={src}/>
-    {
-      annotations.map((annotation, index) => (
-        <Annotation key={index} annotation={annotation}/>
-      )).toJS()
-    }
+    <svg className='ori'>
+      {
+        annotations.map((annotation, index) => (
+          <Annotation key={index} annotation={annotation}/>
+        )).toJS()
+      }
+    </svg>
   </div>
 )
 

@@ -1,8 +1,41 @@
 .annotatorContainer {
-    clear: both;
-    position: relative;
-    width: 100%;
+  clear: both;
+  position: relative;
+  width: 100%;
 }
+
+.ori {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+circle {
+  fill: white;
+  stroke: black;
+  /*
+  transform-origin: center;
+  transform: scale(1, 1);
+  */
+}
+
+circle:hover {
+  fill: red;
+}
+
+
+polygon {
+  fill: rgba(124,240,10,0.2);
+  stroke: purple;
+}
+
+polygon:hover {
+  fill: rgba(124,240,10,0.8);
+  stroke: purple;
+}
+
 
 /*
 .point {
