@@ -25,12 +25,12 @@ const mapDispatchToProps = (dispatch) => {
     onPointMouseDown: (event) => {
       dispatch(selectPoint({ event }));
     },
-    onPointMouseUp: (event) => {
-      dispatch(deselectPoint({ event }));
-    },
     onPointMouseMove: (event) => {
       dispatch(movePoint({ event }));
-    }
+    },
+    onMouseUp: (event) => {
+      dispatch(deselectPoint({ event }));
+    },
   }
 }
 
