@@ -18,7 +18,8 @@ const Annotation = ({
       annotation.get('points', []).map((point, index) =>
         <circle
           key={index}
-          data-index={aix}
+          data-aix={aix}
+          data-pix={index}
           cx={point.get(0)}
           cy={point.get(1)}
           r='5'
