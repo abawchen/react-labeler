@@ -36,13 +36,14 @@ const Annotator = ({
           />
         )).toJS()
       }
-      /*
       {
         <Annotation
           annotation={annotation}
+          onPointMouseDown={onPointMouseDown}
+          onPointMouseUp={onPointMouseUp}
+          onPointMouseMove={onPointMouseMove}
         />
       }
-      */
     </svg>
   </div>
 )
