@@ -16,6 +16,7 @@ const Annotation = ({
   aix,
   annotation,
   hover,
+  onLabelChange,
   onPointMouseDown,
   onPointMouseUp,
   onPolygonMouseDown,
@@ -52,12 +53,14 @@ const Annotation = ({
       width='100'
       height='100'
       style={{
-        visibility: hover ? 'visible' : 'hidden'
+        visibility: hover ? 'visible' : 'visible'
       }}
     >
-      <span>
-        {annotation.get('label')}
-      </span>
+      <input
+        type='text'
+        value={annotation.get('label')}
+        onChange={onLabelChange}
+      />
     </foreignObject>
   </svg>
 )

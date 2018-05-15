@@ -8,6 +8,7 @@ const Annotator = ({
   src,
   annotation,
   annotations,
+  onLabelChange,
   onMouseMove,
   onPointMouseDown,
   onPointMouseUp,
@@ -30,6 +31,7 @@ const Annotator = ({
             aix={index}
             hover={hix == index}
             annotation={annotation}
+            onLabelChange={onLabelChange}
             onPointMouseDown={onPointMouseDown}
             onPointMouseUp={onPointMouseUp}
             onPolygonMouseDown={onPolygonMouseDown}

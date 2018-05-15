@@ -5,6 +5,9 @@ import Immutable from 'immutable';
 
 const annotatorReducers = handleActions(
   {
+    CHANGE_LABEL_TEXT: (state, { payload }) => {
+      return state;
+    },
     MOVE: (state, { payload }) => {
       // https://codepen.io/techniq/pen/yVEeOx
       if (!state.hasIn(['coords', 'x'])) {

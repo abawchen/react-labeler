@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import Annotator from '../components/Annotator';
 
 import {
+  changeLabelText,
   move,
   addPoint,
   selectPoint,
@@ -27,6 +28,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onAddPoint: (event) => {
       dispatch(addPoint(event));
+    },
+    onLabelChange: (event) => {
+       dispatch(changeLabelText({ event }));
     },
     onMouseMove: (event) => {
       dispatch(move({ event }));
