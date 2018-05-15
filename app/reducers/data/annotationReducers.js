@@ -8,20 +8,6 @@ import {
 
 const annotatorReducers = handleActions(
   {
-    SELECT_POINT: (state, { payload }) => {
-      let e = payload.event;
-      return state
-        .setIn(['coords', 'x'], e.pageX)
-        .setIn(['coords', 'y'], e.pageY)
-        .set('aix', e.currentTarget.dataset.aix)
-        .set('pix', e.currentTarget.dataset.pix);
-    },
-    DESELECT_POINT: (state, { payload }) => {
-      return state
-        .removeIn(['coords', 'x'])
-        .set('aix', -1)
-        .set('pix', -1);
-    },
     MOVE_POINT: (state, { payload }) => {
       // https://codepen.io/techniq/pen/yVEeOx
       if (!state.hasIn(['coords', 'x'])) {
@@ -42,6 +28,34 @@ const annotatorReducers = handleActions(
                point.get(0) - xDiff)
         .setIn(['annotations', aix, 'points', pix, 1],
                point.get(1) - yDiff);
+    },
+    SELECT_POINT: (state, { payload }) => {
+      let e = payload.event;
+      return state
+        .setIn(['coords', 'x'], e.pageX)
+        .setIn(['coords', 'y'], e.pageY)
+        .set('aix', e.currentTarget.dataset.aix)
+        .set('pix', e.currentTarget.dataset.pix);
+    },
+    DESELECT_POINT: (state, { payload }) => {
+      return state
+        .removeIn(['coords', 'x'])
+        .set('aix', -1)
+        .set('pix', -1);
+    },
+    SELECT_POLYGON: (state, { payload }) => {
+      let e = payload.event;
+      return state
+        .setIn(['coords', 'x'], e.pageX)
+        .setIn(['coords', 'y'], e.pageY)
+        .set('aix', e.currentTarget.dataset.aix)
+        .set('pix', -1);
+    },
+    DESELECT_POLYGON: (state, { payload }) => {
+      return state
+        .removeIn(['coords', 'x'])
+        .set('aix', -1)
+        .set('pix', -1);
     },
   },
   AnnotatorState

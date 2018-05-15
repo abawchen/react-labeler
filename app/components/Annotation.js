@@ -8,11 +8,14 @@ const Annotation = ({
   annotation,
   onPointMouseDown,
   onPointMouseUp,
-  //onPointMouseMove
+  onPolygonMouseDown,
+  onPolygonMouseUp,
 }) => (
   <svg className='ori'>
     <polygon
       points={annotation.get('points', []).toJS()}
+      onMouseDown={onPolygonMouseDown}
+      onMouseUp={onPolygonMouseUp}
     />
     {
       annotation.get('points', []).map((point, index) =>

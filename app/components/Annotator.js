@@ -17,9 +17,11 @@ const Annotator = ({
   src,
   annotation,
   annotations,
+  onMouseMove,
   onPointMouseDown,
   onPointMouseUp,
-  onMouseMove,
+  onPolygonMouseDown,
+  onPolygonMouseUp,
 }) => (
   <div className='annotatorContainer'>
     <img src={src}/>
@@ -35,6 +37,8 @@ const Annotator = ({
             annotation={annotation}
             onPointMouseDown={onPointMouseDown}
             onPointMouseUp={onPointMouseUp}
+            onPolygonMouseDown={onPolygonMouseDown}
+            onPolygonMouseUp={onPolygonMouseUp}
           />
         )).toJS()
       }
