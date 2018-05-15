@@ -13,6 +13,7 @@ const Annotation = ({
 }) => (
   <svg className='ori'>
     <polygon
+      data-aix={aix}
       points={annotation.get('points', []).toJS()}
       onMouseDown={onPolygonMouseDown}
       onMouseUp={onPolygonMouseUp}
