@@ -1,5 +1,5 @@
+export const MOVE = 'MOVE';
 export const ADD_POINT = 'ADD_POINT';
-export const MOVE_POINT = 'MOVE_POINT';
 export const SELECT_POINT = 'SELECT_POINT';
 export const DESELECT_POINT = 'DESELECT_POINT';
 export const SELECT_POLYGON = 'SELECT_POLYGON';
