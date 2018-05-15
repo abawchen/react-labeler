@@ -3,9 +3,9 @@ import Immutable from 'immutable';
 export const AnnotatorState = Immutable.fromJS({
   // TODO: Remove seeding value
   src: 'https://goo.gl/9nhdu1',
-  //coords: [],
+  coords: {},
   annotations: [
-    /*{
+    {
       id: '1',
       label: 'first',
       shape: 'polygon',
@@ -15,15 +15,14 @@ export const AnnotatorState = Immutable.fromJS({
         [30, 30]
       ]
     },
-    */
     {
       id: '2',
       label: 'second',
       shape: 'polygon',
       points: [
         [100, 100],
-        //[130, 110],
-        //[120, 140]
+        [130, 110],
+        [120, 140]
       ]
     }
   ],

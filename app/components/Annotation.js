@@ -7,8 +7,8 @@ const Annotation = ({
   aix,
   annotation,
   onPointMouseDown,
-  //onPointMouseUp,
-  onPointMouseMove
+  onPointMouseUp,
+  //onPointMouseMove
 }) => (
   <svg className='ori'>
     <polygon
@@ -22,10 +22,9 @@ const Annotation = ({
           data-pix={index}
           cx={point.get(0)}
           cy={point.get(1)}
-          r='10'
+          r='5'
           onMouseDown={onPointMouseDown}
-          //onMouseUp={onPointMouseUp}
-          onMouseMove={onPointMouseMove}
+          onMouseUp={onPointMouseUp}
         />
       )
     }

@@ -5,49 +5,43 @@ import {
   CRAETE
 } from '../../constants/actionTypes';
 
-let coords = {};
 
 const annotatorReducers = handleActions(
   {
     SELECT_POINT: (state, { payload }) => {
-      let event = payload.event;
-      let aix = event.currentTarget.dataset.aix;
-      let pix = event.currentTarget.dataset.pix;
-      coords.x = event.pageX;
-      coords.y = event.pageY;
+      let e = payload.event;
       return state
-        .set('aix', aix)
-        .set('pix', pix);
+        .setIn(['coords', 'x'], e.pageX)
+        .setIn(['coords', 'y'], e.pageY)
+        .set('aix', e.currentTarget.dataset.aix)
+        .set('pix', e.currentTarget.dataset.pix);
     },
     DESELECT_POINT: (state, { payload }) => {
-      coords = {};
       return state
+        .removeIn(['coords', 'x'])
         .set('aix', -1)
         .set('pix', -1);
-
-        // .set('coords', Immutable.fromJS([]));
     },
     MOVE_POINT: (state, { payload }) => {
       // https://codepen.io/techniq/pen/yVEeOx
-      let event = payload.event;
-      let aix = event.currentTarget.dataset.aix;
-      let pix = event.currentTarget.dataset.pix;
-      // if (aix == state.get('aix') && pix == state.get('pix')) {
-      if (!!coords.x) {
-        let point = state
-          .getIn(['annotations', aix, 'points', pix]);
-        let xDiff = coords.x - event.pageX;
-        let yDiff = coords.y - event.pageY;
-        coords.x = event.pageX;
-        coords.y = event.pageY;
-        let points = state
-          .getIn(['annotations', aix, 'points'])
-          .setIn([pix, 0], point.get(0) - xDiff)
-          .setIn([pix, 1], point.get(1) - yDiff);
-        state = state
-          .setIn(['annotations', aix, 'points'], points);
+      if (!state.hasIn(['coords', 'x'])) {
+        return state;
       }
-      return state;
+      let e = payload.event;
+      let aix = state.get('aix');
+      let pix = state.get('pix');
+      let point = state
+        .getIn(['annotations', aix, 'points', pix]);
+
+      let xDiff = state.getIn(['coords', 'x']) - e.pageX;
+      let yDiff = state.getIn(['coords', 'y']) - e.pageY;
+      return state
+        .setIn(['coords', 'x'], e.pageX)
+        .setIn(['coords', 'y'], e.pageY)
+        .setIn(['annotations', aix, 'points', pix, 0],
+               point.get(0) - xDiff)
+        .setIn(['annotations', aix, 'points', pix, 1],
+               point.get(1) - yDiff);
     },
   },
   AnnotatorState

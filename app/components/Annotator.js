@@ -17,15 +17,15 @@ const Annotator = ({
   src,
   annotation,
   annotations,
-  onPointMouseMove,
   onPointMouseDown,
-  onMouseUp,
+  onPointMouseUp,
+  onMouseMove,
 }) => (
   <div className='annotatorContainer'>
     <img src={src}/>
     <svg
       className='ori'
-      onMouseUp={onMouseUp}
+      onMouseMove={onMouseMove}
     >
       {
         annotations.map((annotation, index) => (
@@ -34,18 +34,9 @@ const Annotator = ({
             aix={index}
             annotation={annotation}
             onPointMouseDown={onPointMouseDown}
-            // onPointMouseUp={onPointMouseUp}
-            onPointMouseMove={onPointMouseMove}
+            onPointMouseUp={onPointMouseUp}
           />
         )).toJS()
-      }
-      {
-        <Annotation
-          annotation={annotation}
-          //onPointMouseDown={onPointMouseDown}
-          //onPointMouseUp={onPointMouseUp}
-          //onPointMouseMove={onPointMouseMove}
-        />
       }
     </svg>
   </div>
