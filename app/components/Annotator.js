@@ -16,14 +16,30 @@ import Annotation from './Annotation';
 const Annotator = ({
   src,
   annotation,
-  annotations
+  annotations,
+  onMouseMove,
+  onPointMouseDown,
+  onPointMouseUp,
+  onPolygonMouseDown,
+  onPolygonMouseUp,
 }) => (
   <div className='annotatorContainer'>
     <img src={src}/>
-    <svg className='ori'>
+    <svg
+      className='ori'
+      onMouseMove={onMouseMove}
+    >
       {
         annotations.map((annotation, index) => (
-          <Annotation key={index} annotation={annotation}/>
+          <Annotation
+            key={index}
+            aix={index}
+            annotation={annotation}
+            onPointMouseDown={onPointMouseDown}
+            onPointMouseUp={onPointMouseUp}
+            onPolygonMouseDown={onPolygonMouseDown}
+            onPolygonMouseUp={onPolygonMouseUp}
+          />
         )).toJS()
       }
     </svg>

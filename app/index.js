@@ -6,7 +6,6 @@ import css from './style.css';
 import store from './store';
 import Main from './components/Main';
 
-
 class App extends React.Component {
   render() {
     return (
@@ -18,3 +17,4 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
+

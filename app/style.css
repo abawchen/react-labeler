@@ -15,16 +15,12 @@
 circle {
   fill: white;
   stroke: black;
-  /*
-  transform-origin: center;
-  transform: scale(1, 1);
-  */
 }
 
 circle:hover {
   fill: red;
+  cursor: move;
 }
-
 
 polygon {
   fill: rgba(124,240,10,0.2);
@@ -34,6 +30,7 @@ polygon {
 polygon:hover {
   fill: rgba(124,240,10,0.8);
   stroke: purple;
+  cursor: move;
 }
 
 
