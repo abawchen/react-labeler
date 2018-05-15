@@ -68,6 +68,14 @@ const annotatorReducers = handleActions(
         .set('aix', -1)
         .set('pix', -1);
     },
+    ENTER_POLYGON: (state, { payload }) => {
+       return state
+        .set('hix', parseInt(payload.event.currentTarget.dataset.aix));
+    },
+    LEAVE_POLYGON: (state, { payload }) => {
+       return state
+        .set('hix', -1);
+    }
   },
   AnnotatorState
 );

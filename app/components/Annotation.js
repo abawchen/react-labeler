@@ -15,11 +15,13 @@ let getLabelPosition = (points, axis) => {
 const Annotation = ({
   aix,
   annotation,
-  selected,
+  hover,
   onPointMouseDown,
   onPointMouseUp,
   onPolygonMouseDown,
   onPolygonMouseUp,
+  onPolygonMouseEnter,
+  onPolygonMouseLeave,
 }) => (
   <svg className='ori'>
     <polygon
@@ -27,6 +29,8 @@ const Annotation = ({
       points={annotation.get('points', []).toJS()}
       onMouseDown={onPolygonMouseDown}
       onMouseUp={onPolygonMouseUp}
+      onMouseEnter={onPolygonMouseEnter}
+      onMouseLeave={onPolygonMouseLeave}
     />
     {
       annotation.get('points', []).map((point, index) =>
@@ -48,13 +52,12 @@ const Annotation = ({
       width='100'
       height='100'
       style={{
-        visibility: 'visible'
-        // visibility: selected ? 'visible' : 'hidden'
+        visibility: hover ? 'visible' : 'hidden'
       }}
     >
-      <div>
+      <span>
         {annotation.get('label')}
-      </div>
+      </span>
     </foreignObject>
   </svg>
 )

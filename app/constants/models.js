@@ -4,6 +4,9 @@ export const AnnotatorState = Immutable.fromJS({
   // TODO: Remove seeding value
   src: 'https://goo.gl/9nhdu1',
   coords: {},
+  hix: -1,
+  aix: -1,
+  pix: -1,
   annotations: [
     {
       id: '1',
@@ -26,8 +29,6 @@ export const AnnotatorState = Immutable.fromJS({
       ]
     }
   ],
-  aix: -1,
-  pix: -1,
   annotation: {
     id: '',
     label: '',
@@ -35,12 +36,4 @@ export const AnnotatorState = Immutable.fromJS({
     points: [],
     completed: false
   },
-  point: {
-    x: 0,
-    y: 0
-  },
-  line: {
-    start: [],
-    end: []
-  }
 });

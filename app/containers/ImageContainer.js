@@ -8,11 +8,14 @@ import {
   deselectPoint,
   selectPolygon,
   deselectPolygon,
+  enterPolygon,
+  leavePolygon,
 } from '../actions';
 
 const mapStateToProps = (state) => {
   const annotatorState = state.get('annotator');
   return {
+    hix: annotatorState.get('hix'),
     aix: annotatorState.get('aix'),
     src: annotatorState.get('src'),
     annotation: annotatorState.get('annotation'),
@@ -39,7 +42,13 @@ const mapDispatchToProps = (dispatch) => {
     },
     onPolygonMouseUp: (event) => {
       dispatch(deselectPolygon({ event }));
-    }
+    },
+    onPolygonMouseEnter: (event) => {
+       dispatch(enterPolygon({ event }));
+    },
+    onPolygonMouseLeave: (event) => {
+       dispatch(leavePolygon({ event }));
+    },
   }
 }
 

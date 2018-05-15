@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Annotation from './Annotation';
 
 const Annotator = ({
+  hix,
   aix,
   src,
   annotation,
@@ -12,6 +13,8 @@ const Annotator = ({
   onPointMouseUp,
   onPolygonMouseDown,
   onPolygonMouseUp,
+  onPolygonMouseEnter,
+  onPolygonMouseLeave,
 }) => (
   <div className='annotatorContainer'>
     <img src={src}/>
@@ -23,13 +26,16 @@ const Annotator = ({
         annotations.map((annotation, index) => (
           <Annotation
             key={index}
+            hix={hix}
             aix={index}
-            selected={aix == index}
+            hover={hix == index}
             annotation={annotation}
             onPointMouseDown={onPointMouseDown}
             onPointMouseUp={onPointMouseUp}
             onPolygonMouseDown={onPolygonMouseDown}
             onPolygonMouseUp={onPolygonMouseUp}
+            onPolygonMouseEnter={onPolygonMouseEnter}
+            onPolygonMouseLeave={onPolygonMouseLeave}
           />
         )).toJS()
       }
