@@ -3,13 +3,25 @@ import ReactDOM from 'react-dom';
 
 import Point from './Point';
 
+let getLabelPosition = (points, axis) => {
+  return points
+    .map(p => p.get(axis))
+    .reduce((acc, cur) =>
+      axis === 0
+      ? Math.max(acc, cur) + 5
+      : Math.min(acc, cur) );
+}
+
 const Annotation = ({
   aix,
   annotation,
+  hover,
   onPointMouseDown,
   onPointMouseUp,
   onPolygonMouseDown,
   onPolygonMouseUp,
+  onPolygonMouseEnter,
+  onPolygonMouseLeave,
 }) => (
   <svg className='ori'>
     <polygon
@@ -17,6 +29,8 @@ const Annotation = ({
       points={annotation.get('points', []).toJS()}
       onMouseDown={onPolygonMouseDown}
       onMouseUp={onPolygonMouseUp}
+      onMouseEnter={onPolygonMouseEnter}
+      onMouseLeave={onPolygonMouseLeave}
     />
     {
       annotation.get('points', []).map((point, index) =>
@@ -32,7 +46,19 @@ const Annotation = ({
         />
       )
     }
-    {annotation.get('label')}
+    <foreignObject
+      x={getLabelPosition(annotation.get('points'), 0)}
+      y={getLabelPosition(annotation.get('points'), 1)}
+      width='100'
+      height='100'
+      style={{
+        visibility: hover ? 'visible' : 'hidden'
+      }}
+    >
+      <span>
+        {annotation.get('label')}
+      </span>
+    </foreignObject>
   </svg>
 )
 

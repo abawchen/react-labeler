@@ -2,17 +2,21 @@ import { connect } from 'react-redux';
 import Annotator from '../components/Annotator';
 
 import {
+  move,
   addPoint,
-  movePoint,
   selectPoint,
   deselectPoint,
   selectPolygon,
   deselectPolygon,
+  enterPolygon,
+  leavePolygon,
 } from '../actions';
 
 const mapStateToProps = (state) => {
   const annotatorState = state.get('annotator');
   return {
+    hix: annotatorState.get('hix'),
+    aix: annotatorState.get('aix'),
     src: annotatorState.get('src'),
     annotation: annotatorState.get('annotation'),
     annotations: annotatorState.get('annotations'),
@@ -25,7 +29,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(addPoint(event));
     },
     onMouseMove: (event) => {
-      dispatch(movePoint({ event }));
+      dispatch(move({ event }));
     },
     onPointMouseDown: (event) => {
       dispatch(selectPoint({ event }));
@@ -38,7 +42,13 @@ const mapDispatchToProps = (dispatch) => {
     },
     onPolygonMouseUp: (event) => {
       dispatch(deselectPolygon({ event }));
-    }
+    },
+    onPolygonMouseEnter: (event) => {
+       dispatch(enterPolygon({ event }));
+    },
+    onPolygonMouseLeave: (event) => {
+       dispatch(leavePolygon({ event }));
+    },
   }
 }
 

@@ -1,14 +1,11 @@
 import { handleActions } from 'redux-actions';
 import { AnnotatorState } from '../../constants/models';
 import Immutable from 'immutable';
-import {
-  CRAETE
-} from '../../constants/actionTypes';
 
 
 const annotatorReducers = handleActions(
   {
-    MOVE_POINT: (state, { payload }) => {
+    MOVE: (state, { payload }) => {
       // https://codepen.io/techniq/pen/yVEeOx
       if (!state.hasIn(['coords', 'x'])) {
         return state;
@@ -71,6 +68,14 @@ const annotatorReducers = handleActions(
         .set('aix', -1)
         .set('pix', -1);
     },
+    ENTER_POLYGON: (state, { payload }) => {
+       return state
+        .set('hix', parseInt(payload.event.currentTarget.dataset.aix));
+    },
+    LEAVE_POLYGON: (state, { payload }) => {
+       return state
+        .set('hix', -1);
+    }
   },
   AnnotatorState
 );
