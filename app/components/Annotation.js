@@ -3,9 +3,19 @@ import ReactDOM from 'react-dom';
 
 import Point from './Point';
 
+let getLabelPosition = (points, axis) => {
+  return points
+    .map(p => p.get(axis))
+    .reduce((acc, cur) =>
+      axis === 0
+      ? Math.max(acc, cur) + 5
+      : Math.min(acc, cur) );
+}
+
 const Annotation = ({
   aix,
   annotation,
+  selected,
   onPointMouseDown,
   onPointMouseUp,
   onPolygonMouseDown,
@@ -32,7 +42,20 @@ const Annotation = ({
         />
       )
     }
-    {annotation.get('label')}
+    <foreignObject
+      x={getLabelPosition(annotation.get('points'), 0)}
+      y={getLabelPosition(annotation.get('points'), 1)}
+      width='100'
+      height='100'
+      style={{
+        visibility: 'visible'
+        // visibility: selected ? 'visible' : 'hidden'
+      }}
+    >
+      <div>
+        {annotation.get('label')}
+      </div>
+    </foreignObject>
   </svg>
 )
 

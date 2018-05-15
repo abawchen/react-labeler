@@ -13,6 +13,7 @@ import {
 const mapStateToProps = (state) => {
   const annotatorState = state.get('annotator');
   return {
+    aix: annotatorState.get('aix'),
     src: annotatorState.get('src'),
     annotation: annotatorState.get('annotation'),
     annotations: annotatorState.get('annotations'),

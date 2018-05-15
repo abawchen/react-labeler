@@ -1,19 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import Annotation from './Annotation';
-/*
-  getCursorPosition = (e) => {
-    // https://github.com/svrcekmichal/react-sketchpad/blob/master/src/SketchPad.jsx
-    // const {top, left} = this.canvas.getBoundingClientRect();
-    // return [
-    //   e.clientX - left,
-    //   e.clientY - top
-    // ];
-    return [e.pageX, e.pageY];
-*/
 
 const Annotator = ({
+  aix,
   src,
   annotation,
   annotations,
@@ -34,6 +24,7 @@ const Annotator = ({
           <Annotation
             key={index}
             aix={index}
+            selected={aix == index}
             annotation={annotation}
             onPointMouseDown={onPointMouseDown}
             onPointMouseUp={onPointMouseUp}
