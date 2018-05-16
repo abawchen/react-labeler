@@ -12,17 +12,17 @@ const annotatorReducers = handleActions(
         .setIn(['annotations', aix, 'label'], e.target.value);
     },
     MOVE: (state, { payload }) => {
-      // https://codepen.io/techniq/pen/yVEeOx
       if (!state.hasIn(['coords', 'x'])) {
         return state;
       }
-
+      // TODO: Refactor
+      // https://codepen.io/techniq/pen/yVEeOx
       let e = payload.event;
-      let aix = state.get('aix');
-      let pix = state.get('pix');
+      let aix = parseInt(state.get('aix'));
+      let pix = parseInt(state.get('pix'));
       let xDiff = state.getIn(['coords', 'x']) - e.pageX;
       let yDiff = state.getIn(['coords', 'y']) - e.pageY;
-      if (aix != -1 && pix == -1) {
+      if (aix !== -1 && pix === -1) {
         // Polygon
         let points = state
           .getIn(['annotations', aix, 'points'])
@@ -35,15 +35,39 @@ const annotatorReducers = handleActions(
           .setIn(['annotations', aix, 'points'], points);
       } else {
         // Point
-        let point = state
-          .getIn(['annotations', aix, 'points', pix]);
-        return state
-          .setIn(['coords', 'x'], e.pageX)
-          .setIn(['coords', 'y'], e.pageY)
-          .setIn(['annotations', aix, 'points', pix, 0],
-                 point.get(0) - xDiff)
-          .setIn(['annotations', aix, 'points', pix, 1],
-                 point.get(1) - yDiff);
+        let annotation = state.getIn(['annotations', aix]);
+        let point = annotation.getIn(['points', pix]);
+        let shape = annotation.get('shape');
+        let newX = point.get(0) - xDiff;
+        let newY = point.get(1) - yDiff;
+        if (shape === 'polygon') {
+          // Point of polygon
+          return state
+            .setIn(['coords', 'x'], e.pageX)
+            .setIn(['coords', 'y'], e.pageY)
+            .setIn(['annotations', aix, 'points', pix, 0], newX)
+            .setIn(['annotations', aix, 'points', pix, 1], newY);
+        } else if (shape === 'rectangle') {
+          // Point of rectangle
+          let points = state.getIn(['annotations', aix, 'points'])
+          let previx = (pix - 1 + 4) % 4;
+          let nextix = (pix + 1) % 4;
+          let prevPoint = points.get(previx);
+          let nextPoint = points.get(nextix);
+          let xix = nextix;
+          let yix = previx;
+          if (prevPoint.get(0) === point.get(0)) {
+             xix = previx;
+             yix = nextix;
+          }
+          return state
+            .setIn(['coords', 'x'], e.pageX)
+            .setIn(['coords', 'y'], e.pageY)
+            .setIn(['annotations', aix, 'points', pix, 0], newX)
+            .setIn(['annotations', aix, 'points', pix, 1], newY)
+            .setIn(['annotations', aix, 'points', xix, 0], newX)
+            .setIn(['annotations', aix, 'points', yix, 1], newY);
+        }
       }
     },
     SELECT_POINT: (state, { payload }) => {
@@ -79,11 +103,8 @@ const annotatorReducers = handleActions(
         .set('hix', parseInt(payload.event.currentTarget.dataset.aix));
     },
     LEAVE_POLYGON: (state, { payload }) => {
-      /*
-       return state
+      return state
         .set('hix', -1);
-      */
-      return state;
     }
   },
   AnnotatorState

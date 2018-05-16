@@ -47,20 +47,6 @@ polygon {
 }
 
 polygon:hover {
-  fill: rgba(124,240,10,0.8);
-  stroke: purple;
+  /* fill: rgba(124,240,10,0.8); */
   cursor: move;
 }
-
-
-/*
-.point {
-    position: absolute;
-    width: 10px;
-	height: 10px;
-	background: red;
-	-moz-border-radius: 50px;
-	-webkit-border-radius: 50px;
-	border-radius: 5px;
-}
-*/
