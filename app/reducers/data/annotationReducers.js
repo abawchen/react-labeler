@@ -8,7 +8,6 @@ const annotatorReducers = handleActions(
     CHANGE_LABEL_TEXT: (state, { payload }) => {
       let e = payload.event;
       let aix = e.currentTarget.dataset.aix;
-      console.log(e.target.value);
       return state
         .setIn(['annotations', aix, 'label'], e.target.value);
     },
