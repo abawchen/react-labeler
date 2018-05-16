@@ -14,8 +14,8 @@ export const AnnotatorState = Immutable.fromJS({
       shape: 'polygon',
       points: [
         [10, 10],
-        [20, 20],
-        [30, 30]
+        [20, 250],
+        [30, 130]
       ]
     },
     {
@@ -27,6 +27,17 @@ export const AnnotatorState = Immutable.fromJS({
         [130, 110],
         [120, 140]
       ]
+    },
+    {
+       id: '3',
+       label: 'third',
+       shape: 'rectangle',
+       points: [
+        [50, 50],
+        [50, 80],
+        [80, 80],
+        [80, 50],
+       ]
     }
   ],
   annotation: {
