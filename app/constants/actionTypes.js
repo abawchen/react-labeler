@@ -1,5 +1,4 @@
 export const CHANGE_LABEL_TEXT = 'CHANGE_LABEL_TEXT';
-export const EDIT_LABEL = 'EDIT_LABEL';
 export const MOVE = 'MOVE';
 export const ADD_POINT = 'ADD_POINT';
 export const SELECT_POINT = 'SELECT_POINT';

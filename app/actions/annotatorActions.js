@@ -1,7 +1,6 @@
 import { createAction } from 'redux-actions';
 import {
   CHANGE_LABEL_TEXT,
-  EDIT_LABEL,
   MOVE,
   ADD_POINT,
   SELECT_POINT,
@@ -14,7 +13,6 @@ import {
 
 
 export const changeLabelText = createAction(CHANGE_LABEL_TEXT);
-export const editLabel = createAction(EDIT_LABEL);
 export const move = createAction(MOVE);
 export const addPoint = createAction(ADD_POINT);
 export const selectPoint = createAction(SELECT_POINT);

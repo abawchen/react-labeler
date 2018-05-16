@@ -12,9 +12,6 @@ const annotatorReducers = handleActions(
       return state
         .setIn(['annotations', aix, 'label'], e.target.value);
     },
-    EDIT_LABEL: (state, { payload }) => {
-      return state;
-    },
     MOVE: (state, { payload }) => {
       // https://codepen.io/techniq/pen/yVEeOx
       if (!state.hasIn(['coords', 'x'])) {
