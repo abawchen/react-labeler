@@ -18,6 +18,19 @@
   height: 100%;
 }
 
+.labelInput {
+  font-size: 12px;
+  padding: 2px;
+  width: 100%;
+  border: 1px solid rgba(71,80,92,0.8);
+  border-radius: 3px;
+  text-align: center;
+}
+
+foreignObject {
+  overflow: auto;
+}
+
 circle {
   fill: white;
   stroke: black;
