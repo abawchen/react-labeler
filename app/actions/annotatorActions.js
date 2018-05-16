@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import {
+  CHANGE_LABEL_TEXT,
   MOVE,
   ADD_POINT,
   SELECT_POINT,
@@ -10,6 +11,8 @@ import {
   LEAVE_POLYGON,
 } from '../constants/actionTypes';
 
+
+export const changeLabelText = createAction(CHANGE_LABEL_TEXT);
 export const move = createAction(MOVE);
 export const addPoint = createAction(ADD_POINT);
 export const selectPoint = createAction(SELECT_POINT);

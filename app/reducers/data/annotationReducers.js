@@ -5,6 +5,12 @@ import Immutable from 'immutable';
 
 const annotatorReducers = handleActions(
   {
+    CHANGE_LABEL_TEXT: (state, { payload }) => {
+      let e = payload.event;
+      let aix = e.currentTarget.dataset.aix;
+      return state
+        .setIn(['annotations', aix, 'label'], e.target.value);
+    },
     MOVE: (state, { payload }) => {
       // https://codepen.io/techniq/pen/yVEeOx
       if (!state.hasIn(['coords', 'x'])) {
@@ -73,8 +79,11 @@ const annotatorReducers = handleActions(
         .set('hix', parseInt(payload.event.currentTarget.dataset.aix));
     },
     LEAVE_POLYGON: (state, { payload }) => {
+      /*
        return state
         .set('hix', -1);
+      */
+      return state;
     }
   },
   AnnotatorState

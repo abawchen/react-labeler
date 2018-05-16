@@ -12,10 +12,17 @@ let getLabelPosition = (points, axis) => {
       : Math.min(acc, cur) );
 }
 
+let keyPressHandler = (event) => {
+   if (event.key == 'Enter') {
+     event.target.blur();
+   }
+}
+
 const Annotation = ({
   aix,
   annotation,
   hover,
+  onLabelChange,
   onPointMouseDown,
   onPointMouseUp,
   onPolygonMouseDown,
@@ -31,6 +38,8 @@ const Annotation = ({
       onMouseUp={onPolygonMouseUp}
       onMouseEnter={onPolygonMouseEnter}
       onMouseLeave={onPolygonMouseLeave}
+      // TODO: A bit hacky here.
+      onDoubleClick={() => document.querySelector('#input-' + aix).focus()}
     />
     {
       annotation.get('points', []).map((point, index) =>
@@ -55,9 +64,16 @@ const Annotation = ({
         visibility: hover ? 'visible' : 'hidden'
       }}
     >
-      <span>
-        {annotation.get('label')}
-      </span>
+      <input
+        type='text'
+        className='labelInput'
+        placeholder='label me'
+        id={'input-' + aix}
+        data-aix={aix}
+        value={annotation.get('label')}
+        onChange={onLabelChange}
+        onKeyPress={keyPressHandler}
+      />
     </foreignObject>
   </svg>
 )
