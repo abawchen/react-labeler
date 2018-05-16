@@ -11,7 +11,6 @@ import {
   deselectPolygon,
   enterPolygon,
   leavePolygon,
-  editLabel,
 } from '../actions';
 
 const mapStateToProps = (state) => {
@@ -53,9 +52,6 @@ const mapDispatchToProps = (dispatch) => {
     },
     onPolygonMouseLeave: (event) => {
       dispatch(leavePolygon({ event }));
-    },
-    onPolygonDoubleClick: (event) => {
-      dispatch(editLabel({ event }));
     },
   }
 }

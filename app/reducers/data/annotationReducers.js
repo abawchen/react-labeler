@@ -83,8 +83,11 @@ const annotatorReducers = handleActions(
         .set('hix', parseInt(payload.event.currentTarget.dataset.aix));
     },
     LEAVE_POLYGON: (state, { payload }) => {
+      /*
        return state
         .set('hix', -1);
+      */
+      return state;
     }
   },
   AnnotatorState
