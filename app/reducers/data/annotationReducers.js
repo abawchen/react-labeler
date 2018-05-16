@@ -12,11 +12,11 @@ const annotatorReducers = handleActions(
         .setIn(['annotations', aix, 'label'], e.target.value);
     },
     MOVE: (state, { payload }) => {
-      // https://codepen.io/techniq/pen/yVEeOx
       if (!state.hasIn(['coords', 'x'])) {
         return state;
       }
-
+      // TODO: Refactor
+      // https://codepen.io/techniq/pen/yVEeOx
       let e = payload.event;
       let aix = parseInt(state.get('aix'));
       let pix = parseInt(state.get('pix'));
