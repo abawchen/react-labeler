@@ -58,6 +58,8 @@ const Annotation = ({
     >
       <input
         type='text'
+        className='labelInput'
+        data-aix={aix}
         value={annotation.get('label')}
         onChange={onLabelChange}
       />
