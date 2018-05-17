@@ -3,13 +3,17 @@ import { AnnotatorState } from '../../constants/models';
 import Immutable from 'immutable';
 
 
-const annotatorReducers = handleActions(
-  {
+const annotatorReducers = handleActions({
     ON_IMAGE_LOAD: (state, { payload }) => {
       let e = payload.event;
       return state
         .set('imageWidth', e.target.width)
         .set('imageHeight', e.target.height);
+    },
+    SET_ANNOTATION_SHAPE: (state, { payload }) => {
+      let e = payload.event;
+      return state
+        .set('annotationShape', state.getIn(['keyMap', e.key], ''));
     },
     CHANGE_LABEL_TEXT: (state, { payload }) => {
       let e = payload.event;

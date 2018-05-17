@@ -9,6 +9,12 @@ export const AnnotatorState = Immutable.fromJS({
   hix: -1,
   aix: -1,
   pix: -1,
+  keyMap: {
+    'p': 'polygon',
+    'r': 'rectangle',
+    'Escape': '',
+  },
+  annotationShape: '',
   annotations: [
     {
       id: '1',
