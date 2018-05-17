@@ -13,6 +13,7 @@ const Annotator = ({
   onImageLoad,
   onLabelChange,
   onMouseMove,
+  onKeyDown,
   onPointMouseDown,
   onPointMouseUp,
   onPointMouseEnter,
@@ -32,6 +33,8 @@ const Annotator = ({
       width={imageWidth}
       height={imageHeight}
       onMouseMove={onMouseMove}
+      onKeyDown={onKeyDown}
+      tabIndex='0'
     >
       {
         annotations.map((annotation, index) => (

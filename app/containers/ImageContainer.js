@@ -3,6 +3,7 @@ import Annotator from '../components/Annotator';
 
 import {
   onImageLoad,
+  setAnnotationShape,
   changeLabelText,
   move,
   addPoint,
@@ -24,6 +25,7 @@ const mapStateToProps = (state) => {
     hix: annotatorState.get('hix'),
     aix: annotatorState.get('aix'),
     src: annotatorState.get('src'),
+    annotationShape: annotatorState.get('annotationShape'),
     annotation: annotatorState.get('annotation'),
     annotations: annotatorState.get('annotations'),
   }
@@ -36,6 +38,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onAddPoint: (event) => {
       dispatch(addPoint(event));
+    },
+    onKeyDown: (event) => {
+      dispatch(setAnnotationShape({ event }));
     },
     onLabelChange: (event) => {
        dispatch(changeLabelText({ event }));

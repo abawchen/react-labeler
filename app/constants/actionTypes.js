@@ -1,4 +1,5 @@
 export const ON_IMAGE_LOAD = 'ON_IMAGE_LOAD';
+export const SET_ANNOTATION_SHAPE = 'SET_ANNOTATION_SHAPE';
 export const CHANGE_LABEL_TEXT = 'CHANGE_LABEL_TEXT';
 export const MOVE = 'MOVE';
 export const ADD_POINT = 'ADD_POINT';
