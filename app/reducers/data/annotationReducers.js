@@ -95,8 +95,9 @@ const annotatorReducers = handleActions(
         .set('hix', parseInt(payload.event.currentTarget.dataset.aix))
     },
     LEAVE_POINT: (state, { payload }) => {
-      return state
-        .set('hix', -1)
+      return state.get('pix') === -1
+        ? state.set('hix', -1)
+        : state;
     },
     SELECT_SHAPE: (state, { payload }) => {
       let e = payload.event;
