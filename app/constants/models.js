@@ -6,6 +6,7 @@ export const AnnotatorState = Immutable.fromJS({
   imageWidth: 0,
   imageHeight: 0,
   coords: {},
+  mode: 'DEFAULT',
   hix: -1,
   aix: -1,
   pix: -1,
