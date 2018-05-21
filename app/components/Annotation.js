@@ -18,19 +18,49 @@ let keyPressHandler = (event) => {
    }
 }
 
+let getPathD = (imageWidth, imageHeight, points) => {
+  let d = `M0,0 L${imageWidth},0 L${imageWidth},${imageHeight} L0,${imageHeight} z`;
+  d += points
+    .reduce((acc, p, i) => {
+      return `${acc} ${i === 0 ? 'M' : 'L'}${p.get(0)},${p.get(1)}`
+    }, '');
+  d += ' z';
+  return d;
+}
+
 const Annotation = ({
+  imageWidth,
+  imageHeight,
+  hix,
   aix,
   annotation,
   hover,
   onLabelChange,
   onPointMouseDown,
   onPointMouseUp,
+  onPointMouseEnter,
+  onPointMouseLeave,
   onPolygonMouseDown,
   onPolygonMouseUp,
   onPolygonMouseEnter,
   onPolygonMouseLeave,
 }) => (
-  <svg className='ori'>
+  <svg
+    className='ori'
+    style={{
+      visibility: hix == -1 || hix == aix ? 'visible' : 'hidden'
+    }}
+  >
+    <path
+      className='ori'
+      style={{
+        visibility: hix == aix ? 'visible' : 'hidden'
+      }}
+      d={getPathD(imageWidth, imageHeight, annotation.get('points', []))}
+      fill='gray'
+      fill-rule='evenodd'
+      opacity='0.5'
+    />
     <polygon
       data-aix={aix}
       points={annotation.get('points', []).toJS()}
@@ -52,6 +82,8 @@ const Annotation = ({
           r='5'
           onMouseDown={onPointMouseDown}
           onMouseUp={onPointMouseUp}
+          onMouseEnter={onPointMouseEnter}
+          onMouseLeave={onPointMouseLeave}
         />
       )
     }
@@ -59,7 +91,7 @@ const Annotation = ({
       x={getLabelPosition(annotation.get('points'), 0)}
       y={getLabelPosition(annotation.get('points'), 1)}
       width='100'
-      height='100'
+      height='20'
       style={{
         visibility: hover ? 'visible' : 'hidden'
       }}

@@ -2,11 +2,14 @@ import { connect } from 'react-redux';
 import Annotator from '../components/Annotator';
 
 import {
+  onImageLoad,
   changeLabelText,
   move,
   addPoint,
   selectPoint,
   deselectPoint,
+  enterPoint,
+  leavePoint,
   selectPolygon,
   deselectPolygon,
   enterPolygon,
@@ -16,6 +19,8 @@ import {
 const mapStateToProps = (state) => {
   const annotatorState = state.get('annotator');
   return {
+    imageWidth: annotatorState.get('imageWidth'),
+    imageHeight: annotatorState.get('imageHeight'),
     hix: annotatorState.get('hix'),
     aix: annotatorState.get('aix'),
     src: annotatorState.get('src'),
@@ -26,6 +31,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    onImageLoad: (event) => {
+      dispatch(onImageLoad({ event }));
+    },
     onAddPoint: (event) => {
       dispatch(addPoint(event));
     },
@@ -40,6 +48,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     onPointMouseUp: (event) => {
       dispatch(deselectPoint({ event }));
+    },
+    onPointMouseEnter: (event) => {
+      dispatch(enterPoint({ event }));
+    },
+    onPointMouseLeave: (event) => {
+      dispatch(leavePoint({ event }));
     },
     onPolygonMouseDown: (event) => {
       dispatch(selectPolygon({ event }));

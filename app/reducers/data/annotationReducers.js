@@ -5,6 +5,12 @@ import Immutable from 'immutable';
 
 const annotatorReducers = handleActions(
   {
+    ON_IMAGE_LOAD: (state, { payload }) => {
+      let e = payload.event;
+      return state
+        .set('imageWidth', e.target.width)
+        .set('imageHeight', e.target.height);
+    },
     CHANGE_LABEL_TEXT: (state, { payload }) => {
       let e = payload.event;
       let aix = e.currentTarget.dataset.aix;
@@ -33,7 +39,7 @@ const annotatorReducers = handleActions(
           .setIn(['coords', 'x'], e.pageX)
           .setIn(['coords', 'y'], e.pageY)
           .setIn(['annotations', aix, 'points'], points);
-      } else {
+      } else if (aix !== -1 && pix !== -1){
         // Point
         let annotation = state.getIn(['annotations', aix]);
         let point = annotation.getIn(['points', pix]);
@@ -75,8 +81,8 @@ const annotatorReducers = handleActions(
       return state
         .setIn(['coords', 'x'], e.pageX)
         .setIn(['coords', 'y'], e.pageY)
-        .set('aix', e.currentTarget.dataset.aix)
-        .set('pix', e.currentTarget.dataset.pix);
+        .set('aix', parseInt(e.currentTarget.dataset.aix))
+        .set('pix', parseInt(e.currentTarget.dataset.pix));
     },
     DESELECT_POINT: (state, { payload }) => {
       return state
@@ -84,25 +90,33 @@ const annotatorReducers = handleActions(
         .set('aix', -1)
         .set('pix', -1);
     },
-    SELECT_POLYGON: (state, { payload }) => {
+    ENTER_POINT: (state, { payload }) => {
+      return state
+        .set('hix', parseInt(payload.event.currentTarget.dataset.aix))
+    },
+    LEAVE_POINT: (state, { payload }) => {
+      return state
+        .set('hix', -1)
+    },
+    SELECT_SHAPE: (state, { payload }) => {
       let e = payload.event;
       return state
         .setIn(['coords', 'x'], e.pageX)
         .setIn(['coords', 'y'], e.pageY)
-        .set('aix', e.currentTarget.dataset.aix)
+        .set('aix', parseInt(e.currentTarget.dataset.aix))
         .set('pix', -1);
     },
-    DESELECT_POLYGON: (state, { payload }) => {
+    DESELECT_SHAPE: (state, { payload }) => {
       return state
         .removeIn(['coords', 'x'])
         .set('aix', -1)
         .set('pix', -1);
     },
-    ENTER_POLYGON: (state, { payload }) => {
+    ENTER_SHAPE: (state, { payload }) => {
        return state
         .set('hix', parseInt(payload.event.currentTarget.dataset.aix));
     },
-    LEAVE_POLYGON: (state, { payload }) => {
+    LEAVE_SHAPE: (state, { payload }) => {
       return state
         .set('hix', -1);
     }
