@@ -15,6 +15,8 @@ const Annotator = ({
   onMouseMove,
   onPointMouseDown,
   onPointMouseUp,
+  onPointMouseEnter,
+  onPointMouseLeave,
   onPolygonMouseDown,
   onPolygonMouseUp,
   onPolygonMouseEnter,
@@ -44,6 +46,8 @@ const Annotator = ({
             onLabelChange={onLabelChange}
             onPointMouseDown={onPointMouseDown}
             onPointMouseUp={onPointMouseUp}
+            onPointMouseEnter={onPointMouseEnter}
+            onPointMouseLeave={onPointMouseLeave}
             onPolygonMouseDown={onPolygonMouseDown}
             onPolygonMouseUp={onPolygonMouseUp}
             onPolygonMouseEnter={onPolygonMouseEnter}

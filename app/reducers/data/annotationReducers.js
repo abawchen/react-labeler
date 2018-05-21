@@ -39,7 +39,7 @@ const annotatorReducers = handleActions(
           .setIn(['coords', 'x'], e.pageX)
           .setIn(['coords', 'y'], e.pageY)
           .setIn(['annotations', aix, 'points'], points);
-      } else {
+      } else if (aix !== -1 && pix !== -1){
         // Point
         let annotation = state.getIn(['annotations', aix]);
         let point = annotation.getIn(['points', pix]);
@@ -81,8 +81,8 @@ const annotatorReducers = handleActions(
       return state
         .setIn(['coords', 'x'], e.pageX)
         .setIn(['coords', 'y'], e.pageY)
-        .set('aix', e.currentTarget.dataset.aix)
-        .set('pix', e.currentTarget.dataset.pix);
+        .set('aix', parseInt(e.currentTarget.dataset.aix))
+        .set('pix', parseInt(e.currentTarget.dataset.pix));
     },
     DESELECT_POINT: (state, { payload }) => {
       return state
@@ -90,12 +90,20 @@ const annotatorReducers = handleActions(
         .set('aix', -1)
         .set('pix', -1);
     },
+    ENTER_POINT: (state, { payload }) => {
+      return state
+        .set('hix', parseInt(payload.event.currentTarget.dataset.aix))
+    },
+    LEAVE_POINT: (state, { payload }) => {
+      return state
+        .set('hix', -1)
+    },
     SELECT_SHAPE: (state, { payload }) => {
       let e = payload.event;
       return state
         .setIn(['coords', 'x'], e.pageX)
         .setIn(['coords', 'y'], e.pageY)
-        .set('aix', e.currentTarget.dataset.aix)
+        .set('aix', parseInt(e.currentTarget.dataset.aix))
         .set('pix', -1);
     },
     DESELECT_SHAPE: (state, { payload }) => {

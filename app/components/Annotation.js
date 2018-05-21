@@ -38,6 +38,8 @@ const Annotation = ({
   onLabelChange,
   onPointMouseDown,
   onPointMouseUp,
+  onPointMouseEnter,
+  onPointMouseLeave,
   onPolygonMouseDown,
   onPolygonMouseUp,
   onPolygonMouseEnter,
@@ -80,6 +82,8 @@ const Annotation = ({
           r='5'
           onMouseDown={onPointMouseDown}
           onMouseUp={onPointMouseUp}
+          onMouseEnter={onPointMouseEnter}
+          onMouseLeave={onPointMouseLeave}
         />
       )
     }

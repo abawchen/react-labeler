@@ -20,10 +20,6 @@
   position: absolute;
   left: 0;
   top: 0;
-  /*
-  width: 100%;
-  height: 100%;
-  */
 }
 
 .labelInput {
@@ -44,8 +40,9 @@ circle {
   stroke: black;
 }
 
+
 circle:hover {
-  fill: red;
+  /* fill: red; */
   cursor: move;
 }
 

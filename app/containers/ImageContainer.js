@@ -8,6 +8,8 @@ import {
   addPoint,
   selectPoint,
   deselectPoint,
+  enterPoint,
+  leavePoint,
   selectPolygon,
   deselectPolygon,
   enterPolygon,
@@ -46,6 +48,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     onPointMouseUp: (event) => {
       dispatch(deselectPoint({ event }));
+    },
+    onPointMouseEnter: (event) => {
+      dispatch(enterPoint({ event }));
+    },
+    onPointMouseLeave: (event) => {
+      dispatch(leavePoint({ event }));
     },
     onPolygonMouseDown: (event) => {
       dispatch(selectPolygon({ event }));
