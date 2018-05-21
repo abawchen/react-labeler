@@ -48,7 +48,7 @@ const Annotation = ({
   <svg
     className='ori'
     style={{
-      visibility: hix == -1 || hix == aix ? 'visible' : 'hidden'
+      display: hix == -1 || hix == aix ? 'block' : 'none'
     }}
   >
     <path
