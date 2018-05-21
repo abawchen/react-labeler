@@ -84,7 +84,7 @@ const annotatorReducers = handleActions(
         .set('aix', -1)
         .set('pix', -1);
     },
-    SELECT_POLYGON: (state, { payload }) => {
+    SELECT_SHAPE: (state, { payload }) => {
       let e = payload.event;
       return state
         .setIn(['coords', 'x'], e.pageX)
@@ -92,17 +92,17 @@ const annotatorReducers = handleActions(
         .set('aix', e.currentTarget.dataset.aix)
         .set('pix', -1);
     },
-    DESELECT_POLYGON: (state, { payload }) => {
+    DESELECT_SHAPE: (state, { payload }) => {
       return state
         .removeIn(['coords', 'x'])
         .set('aix', -1)
         .set('pix', -1);
     },
-    ENTER_POLYGON: (state, { payload }) => {
+    ENTER_SHAPE: (state, { payload }) => {
        return state
         .set('hix', parseInt(payload.event.currentTarget.dataset.aix));
     },
-    LEAVE_POLYGON: (state, { payload }) => {
+    LEAVE_SHAPE: (state, { payload }) => {
       return state
         .set('hix', -1);
     }
