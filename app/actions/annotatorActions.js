@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import {
+  ON_IMAGE_LOAD,
   CHANGE_LABEL_TEXT,
   MOVE,
   ADD_POINT,
@@ -11,7 +12,7 @@ import {
   LEAVE_SHAPE,
 } from '../constants/actionTypes';
 
-
+export const onImageLoad = createAction(ON_IMAGE_LOAD);
 export const changeLabelText = createAction(CHANGE_LABEL_TEXT);
 export const move = createAction(MOVE);
 export const addPoint = createAction(ADD_POINT);

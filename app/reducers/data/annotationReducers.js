@@ -5,6 +5,12 @@ import Immutable from 'immutable';
 
 const annotatorReducers = handleActions(
   {
+    ON_IMAGE_LOAD: (state, { payload }) => {
+      let e = payload.event;
+      return state
+        .set('imageWidth', e.target.width)
+        .set('imageHeight', e.target.height);
+    },
     CHANGE_LABEL_TEXT: (state, { payload }) => {
       let e = payload.event;
       let aix = e.currentTarget.dataset.aix;

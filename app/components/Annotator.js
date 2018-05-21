@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import Annotation from './Annotation';
 
 const Annotator = ({
+  imageWidth,
+  imageHeight,
   hix,
   aix,
   src,
   annotation,
   annotations,
+  onImageLoad,
   onLabelChange,
   onMouseMove,
   onPointMouseDown,
@@ -18,9 +21,14 @@ const Annotator = ({
   onPolygonMouseLeave,
 }) => (
   <div className='annotatorContainer'>
-    <img src={src}/>
+    <img
+      src={src}
+      onLoad={onImageLoad}
+    />
     <svg
       className='ori'
+      width={imageWidth}
+      height={imageHeight}
       onMouseMove={onMouseMove}
     >
       {

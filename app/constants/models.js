@@ -3,6 +3,8 @@ import Immutable from 'immutable';
 export const AnnotatorState = Immutable.fromJS({
   // TODO: Remove seeding value
   src: 'https://goo.gl/9nhdu1',
+  imageWidth: 0,
+  imageHeight: 0,
   coords: {},
   hix: -1,
   aix: -1,
@@ -40,11 +42,8 @@ export const AnnotatorState = Immutable.fromJS({
        ]
     }
   ],
-  annotation: {
-    id: '',
-    label: '',
-    shape: '',
-    points: [],
-    completed: false
-  },
+  overlay: {
+    aix: -1,
+    points: []
+  }
 });
