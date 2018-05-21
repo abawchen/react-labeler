@@ -34,6 +34,8 @@ const Annotator = ({
       {
         annotations.map((annotation, index) => (
           <Annotation
+            imageWidth={imageWidth}
+            imageHeight={imageHeight}
             key={index}
             hix={hix}
             aix={index}

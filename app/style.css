@@ -50,7 +50,7 @@ circle:hover {
 }
 
 polygon {
-  fill: rgba(124,240,10,0.2);
+  fill: rgba(124,240,10,0);
   stroke: purple;
 }
 
