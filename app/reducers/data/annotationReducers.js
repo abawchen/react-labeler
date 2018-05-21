@@ -3,6 +3,7 @@ import { handleActions } from 'redux-actions';
 import { AnnotatorState } from '../../constants/models';
 import {
    DEFAULT,
+   ADD_POINT,
    MOVE_POINT,
    MOVE_SHAPE,
 } from '../../constants/modes';
@@ -38,14 +39,14 @@ const annotatorReducers = handleActions({
           .update('points', list => list.push(
             Immutable.fromJS([e.pageX, e.pageY])));
         return state
-          .set('mode', 'adding-polygon')
+          .set('mode', ADD_POINT)
           .set('annotation', annotation);
       }
       return state;
     },
     MOVE: (state, { payload }) => {
       let mode = state.get('mode');
-      if (mode === DEFAULT) {
+      if (mode === DEFAULT || mode === ADD_POINT) {
         return state;
       }
       // TODO: Refactor
