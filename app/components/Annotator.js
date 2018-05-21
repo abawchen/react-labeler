@@ -12,6 +12,7 @@ const Annotator = ({
   annotations,
   onImageLoad,
   onLabelChange,
+  onAddPoint,
   onMouseMove,
   onKeyDown,
   onPointMouseDown,
@@ -30,11 +31,12 @@ const Annotator = ({
     />
     <svg
       className='ori'
+      tabIndex='0'
       width={imageWidth}
       height={imageHeight}
       onMouseMove={onMouseMove}
       onKeyDown={onKeyDown}
-      tabIndex='0'
+      onClick={onAddPoint}
     >
       {
         annotations.map((annotation, index) => (

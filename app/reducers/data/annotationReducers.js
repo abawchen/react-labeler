@@ -26,6 +26,23 @@ const annotatorReducers = handleActions({
       return state
         .setIn(['annotations', aix, 'label'], e.target.value);
     },
+    ADD_POINT: (state, { payload }) => {
+      let e = payload.event;
+      if (state.get('annotationShape') === 'polygon') {
+        let annotation = state
+          .get('annotation', Immutable.fromJS({
+            id: '',
+            shape: 'polygon',
+            points: []
+          }))
+          .update('points', list => list.push(
+            Immutable.fromJS([e.pageX, e.pageY])));
+        return state
+          .set('mode', 'adding-polygon')
+          .set('annotation', annotation);
+      }
+      return state;
+    },
     MOVE: (state, { payload }) => {
       let mode = state.get('mode');
       if (mode === DEFAULT) {

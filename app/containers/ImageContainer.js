@@ -37,7 +37,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(onImageLoad({ event }));
     },
     onAddPoint: (event) => {
-      dispatch(addPoint(event));
+      dispatch(addPoint({ event }));
     },
     onKeyDown: (event) => {
       dispatch(setAnnotationShape({ event }));
