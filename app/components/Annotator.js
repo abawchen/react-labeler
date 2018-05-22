@@ -58,7 +58,7 @@ const Annotator = ({
             onPolygonMouseEnter={onPolygonMouseEnter}
             onPolygonMouseLeave={onPolygonMouseLeave}
           />
-        )).toJS()
+        ))
       }
     </svg>
   </div>

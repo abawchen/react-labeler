@@ -16,6 +16,12 @@ export const AnnotatorState = Immutable.fromJS({
     'Escape': '',
   },
   annotationShape: '',
+  annotation: {
+    id: '',
+    label: '',
+    shape: '',
+    points: []
+  },
   annotations: [
     {
       id: '1',
@@ -49,8 +55,4 @@ export const AnnotatorState = Immutable.fromJS({
        ]
     }
   ],
-  overlay: {
-    aix: -1,
-    points: []
-  }
 });

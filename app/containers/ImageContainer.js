@@ -18,17 +18,7 @@ import {
 } from '../actions';
 
 const mapStateToProps = (state) => {
-  const annotatorState = state.get('annotator');
-  return {
-    imageWidth: annotatorState.get('imageWidth'),
-    imageHeight: annotatorState.get('imageHeight'),
-    hix: annotatorState.get('hix'),
-    aix: annotatorState.get('aix'),
-    src: annotatorState.get('src'),
-    annotationShape: annotatorState.get('annotationShape'),
-    annotation: annotatorState.get('annotation'),
-    annotations: annotatorState.get('annotations'),
-  }
+  return state.get('annotator').toJS();
 }
 
 const mapDispatchToProps = (dispatch) => {
