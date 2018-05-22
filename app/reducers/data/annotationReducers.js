@@ -1,6 +1,12 @@
+import Immutable from 'immutable';
 import { handleActions } from 'redux-actions';
 import { AnnotatorState } from '../../constants/models';
-import Immutable from 'immutable';
+import {
+   DEFAULT,
+   ADD_POINT,
+   MOVE_POINT,
+   MOVE_SHAPE,
+} from '../../constants/modes';
 
 
 const annotatorReducers = handleActions({
@@ -33,13 +39,14 @@ const annotatorReducers = handleActions({
           .update('points', list => list.push(
             Immutable.fromJS([e.pageX, e.pageY])));
         return state
-          .set('mode', 'adding-polygon')
+          .set('mode', ADD_POINT)
           .set('annotation', annotation);
       }
       return state;
     },
     MOVE: (state, { payload }) => {
-      if (!state.hasIn(['coords', 'x'])) {
+      let mode = state.get('mode');
+      if (mode === DEFAULT || mode === ADD_POINT) {
         return state;
       }
       // TODO: Refactor
@@ -49,8 +56,7 @@ const annotatorReducers = handleActions({
       let pix = parseInt(state.get('pix'));
       let xDiff = state.getIn(['coords', 'x']) - e.pageX;
       let yDiff = state.getIn(['coords', 'y']) - e.pageY;
-      if (aix !== -1 && pix === -1) {
-        // Polygon
+      if (mode === MOVE_SHAPE) {
         let points = state
           .getIn(['annotations', aix, 'points'])
           .map(point => Immutable.fromJS(
@@ -60,8 +66,7 @@ const annotatorReducers = handleActions({
           .setIn(['coords', 'x'], e.pageX)
           .setIn(['coords', 'y'], e.pageY)
           .setIn(['annotations', aix, 'points'], points);
-      } else if (aix !== -1 && pix !== -1){
-        // Point
+      } else if (mode === MOVE_POINT) {
         let annotation = state.getIn(['annotations', aix]);
         let point = annotation.getIn(['points', pix]);
         let shape = annotation.get('shape');
@@ -100,6 +105,7 @@ const annotatorReducers = handleActions({
     SELECT_POINT: (state, { payload }) => {
       let e = payload.event;
       return state
+        .set('mode', MOVE_POINT)
         .setIn(['coords', 'x'], e.pageX)
         .setIn(['coords', 'y'], e.pageY)
         .set('aix', parseInt(e.currentTarget.dataset.aix))
@@ -107,6 +113,7 @@ const annotatorReducers = handleActions({
     },
     DESELECT_POINT: (state, { payload }) => {
       return state
+        .set('mode', DEFAULT)
         .removeIn(['coords', 'x'])
         .set('aix', -1)
         .set('pix', -1);
@@ -116,13 +123,14 @@ const annotatorReducers = handleActions({
         .set('hix', parseInt(payload.event.currentTarget.dataset.aix))
     },
     LEAVE_POINT: (state, { payload }) => {
-      return state.get('pix') === -1
+      return state.get('mode') === DEFAULT
         ? state.set('hix', -1)
         : state;
     },
     SELECT_SHAPE: (state, { payload }) => {
       let e = payload.event;
       return state
+        .set('mode', MOVE_SHAPE)
         .setIn(['coords', 'x'], e.pageX)
         .setIn(['coords', 'y'], e.pageY)
         .set('aix', parseInt(e.currentTarget.dataset.aix))
@@ -130,6 +138,7 @@ const annotatorReducers = handleActions({
     },
     DESELECT_SHAPE: (state, { payload }) => {
       return state
+        .set('mode', DEFAULT)
         .removeIn(['coords', 'x'])
         .set('aix', -1)
         .set('pix', -1);
@@ -139,8 +148,9 @@ const annotatorReducers = handleActions({
         .set('hix', parseInt(payload.event.currentTarget.dataset.aix));
     },
     LEAVE_SHAPE: (state, { payload }) => {
-      return state
-        .set('hix', -1);
+      return state.get('mode') === DEFAULT
+        ? state.set('hix', -1)
+        : state;
     }
   },
   AnnotatorState
