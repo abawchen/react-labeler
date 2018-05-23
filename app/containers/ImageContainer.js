@@ -3,6 +3,7 @@ import Annotator from '../components/Annotator';
 
 import {
   onImageLoad,
+  setAnnotationShape,
   changeLabelText,
   move,
   addPoint,
@@ -14,19 +15,13 @@ import {
   deselectPolygon,
   enterPolygon,
   leavePolygon,
+  enterPrePoint,
+  leavePrePoint,
+  clickPrePoint,
 } from '../actions';
 
 const mapStateToProps = (state) => {
-  const annotatorState = state.get('annotator');
-  return {
-    imageWidth: annotatorState.get('imageWidth'),
-    imageHeight: annotatorState.get('imageHeight'),
-    hix: annotatorState.get('hix'),
-    aix: annotatorState.get('aix'),
-    src: annotatorState.get('src'),
-    annotation: annotatorState.get('annotation'),
-    annotations: annotatorState.get('annotations'),
-  }
+  return state.get('annotator').toJS();
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -35,7 +30,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(onImageLoad({ event }));
     },
     onAddPoint: (event) => {
-      dispatch(addPoint(event));
+      dispatch(addPoint({ event }));
+    },
+    onKeyDown: (event) => {
+      dispatch(setAnnotationShape({ event }));
     },
     onLabelChange: (event) => {
        dispatch(changeLabelText({ event }));
@@ -66,6 +64,15 @@ const mapDispatchToProps = (dispatch) => {
     },
     onPolygonMouseLeave: (event) => {
       dispatch(leavePolygon({ event }));
+    },
+    onPrePointMouseEnter: (event) => {
+      dispatch(enterPrePoint({ event }));
+    },
+    onPrePointMouseLeave: (event) => {
+      dispatch(leavePrePoint({ event }));
+    },
+    onPrePointClick: (event) => {
+      dispatch(clickPrePoint({ event }));
     },
   }
 }

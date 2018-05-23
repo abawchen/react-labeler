@@ -35,16 +35,17 @@ foreignObject {
   overflow: auto;
 }
 
-circle {
+circle, line {
   fill: white;
   stroke: black;
 }
 
-
+/*
 circle:hover {
-  /* fill: red; */
+  fill: red;
   cursor: move;
 }
+*/
 
 polygon {
   fill: rgba(124,240,10,0);

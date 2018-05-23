@@ -1,18 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Annotation from './Annotation';
+import PreAnnotation from './PreAnnotation';
 
 const Annotator = ({
   imageWidth,
   imageHeight,
   hix,
   aix,
+  pix,
   src,
-  annotation,
+  mode,
+  preAnnotation,
   annotations,
   onImageLoad,
   onLabelChange,
+  onAddPoint,
   onMouseMove,
+  onKeyDown,
   onPointMouseDown,
   onPointMouseUp,
   onPointMouseEnter,
@@ -21,6 +26,9 @@ const Annotator = ({
   onPolygonMouseUp,
   onPolygonMouseEnter,
   onPolygonMouseLeave,
+  onPrePointMouseEnter,
+  onPrePointMouseLeave,
+  onPrePointClick,
 }) => (
   <div className='annotatorContainer'>
     <img
@@ -29,10 +37,26 @@ const Annotator = ({
     />
     <svg
       className='ori'
+      tabIndex='0'
       width={imageWidth}
       height={imageHeight}
       onMouseMove={onMouseMove}
+      onKeyDown={onKeyDown}
+      onClick={onAddPoint}
     >
+      {
+        <PreAnnotation
+          imageWidth={imageWidth}
+          imageHeight={imageHeight}
+          aix={-1}
+          pix={pix}
+          mode={mode}
+          preAnnotation={preAnnotation}
+          onPrePointMouseEnter={onPrePointMouseEnter}
+          onPrePointMouseLeave={onPrePointMouseLeave}
+          onPrePointClick={onPrePointClick}
+        />
+      }
       {
         annotations.map((annotation, index) => (
           <Annotation
@@ -41,7 +65,8 @@ const Annotator = ({
             key={index}
             hix={hix}
             aix={index}
-            hover={hix == index}
+            mode={mode}
+            hover={hix === index}
             annotation={annotation}
             onLabelChange={onLabelChange}
             onPointMouseDown={onPointMouseDown}
@@ -53,7 +78,7 @@ const Annotator = ({
             onPolygonMouseEnter={onPolygonMouseEnter}
             onPolygonMouseLeave={onPolygonMouseLeave}
           />
-        )).toJS()
+        ))
       }
     </svg>
   </div>
