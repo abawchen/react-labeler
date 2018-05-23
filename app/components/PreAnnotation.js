@@ -6,14 +6,13 @@ import {
   keyPressHandler,
 } from '../utils/annotation';
 
-
-const Annotation = ({
+const PreAnnotation = ({
   imageWidth,
   imageHeight,
   hix,
   aix,
   mode,
-  annotation,
+  preAnnotation,
   hover,
   onLabelChange,
   onPointMouseDown,
@@ -28,31 +27,31 @@ const Annotation = ({
   <svg
     className='ori'
     style={{
-      display: (hix === -1 || hover) && mode !== 'ADD_POINT' ? 'block' : 'none'
+      display: (aix === -1 && mode === 'ADD_POINT') ? 'block' : 'none'
     }}
   >
     <path
       className='ori'
       style={{
-        visibility: hover ? 'visible' : 'hidden'
+        visibility: hix === aix ? 'visible' : 'hidden'
       }}
-      d={getPathD(imageWidth, imageHeight, annotation.points)}
+      d={getPathD(imageWidth, imageHeight, preAnnotation.points)}
       fill='gray'
       fill-rule='evenodd'
       opacity='0.5'
     />
     <polygon
       data-aix={aix}
-      points={annotation.points}
-      onMouseDown={onPolygonMouseDown}
-      onMouseUp={onPolygonMouseUp}
-      onMouseEnter={onPolygonMouseEnter}
-      onMouseLeave={onPolygonMouseLeave}
+      points={preAnnotation.points}
+      // onMouseDown={onPolygonMouseDown}
+      // onMouseUp={onPolygonMouseUp}
+      // onMouseEnter={onPolygonMouseEnter}
+      // onMouseLeave={onPolygonMouseLeave}
       // TODO: A bit hacky here.
-      onDoubleClick={() => document.querySelector('#input-' + aix).focus()}
+      // onDoubleClick={() => document.querySelector('#input-' + aix).focus()}
     />
     {
-      annotation.points.map((point, index) =>
+      preAnnotation.points.map((point, index) =>
         <circle
           key={index}
           data-aix={aix}
@@ -68,8 +67,8 @@ const Annotation = ({
       )
     }
     <foreignObject
-      x={getLabelPosition(annotation.points, 0)}
-      y={getLabelPosition(annotation.points, 1)}
+      x={getLabelPosition(preAnnotation.points, 0)}
+      y={getLabelPosition(preAnnotation.points, 1)}
       width='100'
       height='20'
       style={{
@@ -82,7 +81,7 @@ const Annotation = ({
         placeholder='label me'
         id={'input-' + aix}
         data-aix={aix}
-        value={annotation.label}
+        value={preAnnotation.label}
         onChange={onLabelChange}
         onKeyPress={keyPressHandler}
       />
@@ -90,4 +89,4 @@ const Annotation = ({
   </svg>
 )
 
-export default Annotation;
+export default PreAnnotation;

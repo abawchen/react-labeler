@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Annotation from './Annotation';
+import PreAnnotation from './PreAnnotation';
 
 const Annotator = ({
   imageWidth,
@@ -9,7 +10,7 @@ const Annotator = ({
   aix,
   src,
   mode,
-  annotation,
+  preAnnotation,
   annotations,
   onImageLoad,
   onLabelChange,
@@ -40,10 +41,10 @@ const Annotator = ({
       onClick={onAddPoint}
     >
       {
-        <Annotation
+        <PreAnnotation
           aix={-1}
           mode={mode}
-          annotation={annotation}
+          preAnnotation={preAnnotation}
         />
       }
       {
@@ -54,7 +55,8 @@ const Annotator = ({
             key={index}
             hix={hix}
             aix={index}
-            hover={hix == index}
+            mode={mode}
+            hover={hix === index}
             annotation={annotation}
             onLabelChange={onLabelChange}
             onPointMouseDown={onPointMouseDown}

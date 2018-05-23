@@ -16,7 +16,7 @@ export const AnnotatorState = Immutable.fromJS({
     'Escape': '',
   },
   annotationShape: '',
-  annotation: {
+  preAnnotation: {
     id: '',
     label: '',
     shape: '',
