@@ -15,6 +15,7 @@ import {
   LEAVE_SHAPE,
   ENTER_PRE_POINT,
   LEAVE_PRE_POINT,
+  CLICK_PRE_POINT,
 } from '../constants/actionTypes';
 
 export const onImageLoad = createAction(ON_IMAGE_LOAD);
@@ -32,3 +33,4 @@ export const enterPolygon = createAction(ENTER_SHAPE);
 export const leavePolygon = createAction(LEAVE_SHAPE);
 export const enterPrePoint = createAction(ENTER_PRE_POINT);
 export const leavePrePoint = createAction(LEAVE_PRE_POINT);
+export const clickPrePoint = createAction(CLICK_PRE_POINT);

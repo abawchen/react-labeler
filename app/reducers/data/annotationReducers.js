@@ -8,6 +8,11 @@ import {
    MOVE_SHAPE,
 } from '../../constants/modes';
 
+const defaultPreAnnotation = Immutable.fromJS({
+  id: '',
+  shape: '',
+  points: []
+});
 
 const annotatorReducers = handleActions({
     ON_IMAGE_LOAD: (state, { payload }) => {
@@ -31,11 +36,8 @@ const annotatorReducers = handleActions({
       let e = payload.event;
       if (state.get('annotationShape') === 'polygon') {
         let preAnnotation = state
-          .get('preAnnotation', Immutable.fromJS({
-            id: '',
-            shape: 'polygon',
-            points: []
-          }))
+          .get('preAnnotation', defaultPreAnnotation)
+          .set('shape', 'polygon')
           .update('points', list => list.push(
             Immutable.fromJS([e.pageX, e.pageY])));
         return state
@@ -159,6 +161,14 @@ const annotatorReducers = handleActions({
     LEAVE_PRE_POINT: (state, { payload }) => {
       return state
         .set('pix', -1);
+    },
+    CLICK_PRE_POINT: (state, { payload }) => {
+      return state
+        .set('mode', 'DEFAULT')
+        .set('annotationShape', '')
+        .set('pix', -1)
+        .update('annotations', list => list.push(state.get('preAnnotation')))
+        .set('preAnnotation', defaultPreAnnotation);
     },
   },
   AnnotatorState

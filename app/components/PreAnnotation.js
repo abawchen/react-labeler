@@ -22,6 +22,7 @@ const PreAnnotation = ({
   onPolygonMouseLeave,
   onPrePointMouseEnter,
   onPrePointMouseLeave,
+  onPrePointClick,
 }) => (
   <svg
     className='ori'
@@ -45,23 +46,6 @@ const PreAnnotation = ({
         )
       })
     }
-    <path
-      className='ori'
-      // d={getPathD(imageWidth, imageHeight, false, preAnnotation.points)}
-      // fill='blue'
-      // fill-rule='evenodd'
-      // opacity='0.5'
-    />
-    <polygon
-      // data-aix={aix}
-      // points={preAnnotation.points}
-      // onMouseDown={onPolygonMouseDown}
-      // onMouseUp={onPolygonMouseUp}
-      // onMouseEnter={onPolygonMouseEnter}
-      // onMouseLeave={onPolygonMouseLeave}
-      // TODO: A bit hacky here.
-      // onDoubleClick={() => document.querySelector('#input-' + aix).focus()}
-    />
     {
       preAnnotation.points.map((point, index) =>
         <circle
@@ -73,6 +57,7 @@ const PreAnnotation = ({
           cy={point[1]}
           onMouseEnter={index === 0 && onPrePointMouseEnter}
           onMouseLeave={index === 0 && onPrePointMouseLeave}
+          onClick={index === 0 && onPrePointClick}
           style={{
             fill: pix === index ? 'lime' : 'white',
             stroke: pix === index ? 'blue' : 'black',
@@ -80,26 +65,6 @@ const PreAnnotation = ({
         />
       )
     }
-    <foreignObject
-      x={getLabelPosition(preAnnotation.points, 0)}
-      y={getLabelPosition(preAnnotation.points, 1)}
-      width='100'
-      height='20'
-      style={{
-        visibility: hover ? 'visible' : 'hidden'
-      }}
-    >
-      <input
-        type='text'
-        className='labelInput'
-        placeholder='label me'
-        id={'input-' + aix}
-        data-aix={aix}
-        value={preAnnotation.label}
-        onChange={onLabelChange}
-        onKeyPress={keyPressHandler}
-      />
-    </foreignObject>
   </svg>
 )
 

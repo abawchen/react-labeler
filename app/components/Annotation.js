@@ -49,8 +49,6 @@ const Annotation = ({
       onMouseUp={onPolygonMouseUp}
       onMouseEnter={onPolygonMouseEnter}
       onMouseLeave={onPolygonMouseLeave}
-      // TODO: A bit hacky here.
-      onDoubleClick={() => document.querySelector('#input-' + aix).focus()}
     />
     {
       annotation.points.map((point, index) =>
@@ -84,6 +82,8 @@ const Annotation = ({
         type='text'
         className='labelInput'
         placeholder='label me'
+        // https://stackoverflow.com/a/36925998/9041712
+        ref={(input) => input != null && input.focus()}
         id={'input-' + aix}
         data-aix={aix}
         value={annotation.label}

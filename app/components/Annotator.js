@@ -28,6 +28,7 @@ const Annotator = ({
   onPolygonMouseLeave,
   onPrePointMouseEnter,
   onPrePointMouseLeave,
+  onPrePointClick,
 }) => (
   <div className='annotatorContainer'>
     <img
@@ -53,6 +54,7 @@ const Annotator = ({
           preAnnotation={preAnnotation}
           onPrePointMouseEnter={onPrePointMouseEnter}
           onPrePointMouseLeave={onPrePointMouseLeave}
+          onPrePointClick={onPrePointClick}
         />
       }
       {

@@ -13,6 +13,7 @@ export const ENTER_SHAPE = 'ENTER_SHAPE';
 export const LEAVE_SHAPE = 'LEAVE_SHAPE';
 export const ENTER_PRE_POINT = 'ENTER_PRE_POINT';
 export const LEAVE_PRE_POINT = 'LEAVE_PRE_POINT';
+export const CLICK_PRE_POINT = 'CLICK_PRE_POINT';
 export const CREATE = 'CREATE';
 export const DELETE = 'DELETE';
 export const EDIT = 'EDIT';

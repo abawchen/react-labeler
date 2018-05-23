@@ -24,3 +24,7 @@ export const keyPressHandler = (event) => {
      event.target.blur();
    }
 }
+
+export const focusOnInput = (id) => {
+  document.querySelector(id).focus();
+}
