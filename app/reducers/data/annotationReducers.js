@@ -177,7 +177,8 @@ const annotatorReducers = handleActions({
         .set('annotationShape', '')
         .set('pix', -1)
         .update('annotations', list => list.push(state.get('preAnnotation')))
-        .set('preAnnotation', defaultPreAnnotation);
+        .set('preAnnotation', defaultPreAnnotation)
+        .set('hix', state.get('annotations').size);
     },
   },
   AnnotatorState
