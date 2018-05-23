@@ -12,6 +12,7 @@ const Annotation = ({
   imageHeight,
   hix,
   aix,
+  pix,
   mode,
   annotation,
   hover,
@@ -36,7 +37,7 @@ const Annotation = ({
       style={{
         visibility: hover ? 'visible' : 'hidden'
       }}
-      d={getPathD(imageWidth, imageHeight, annotation.points)}
+      d={getPathD(imageWidth, imageHeight, true, annotation.points)}
       fill='gray'
       fill-rule='evenodd'
       opacity='0.5'
@@ -54,12 +55,15 @@ const Annotation = ({
     {
       annotation.points.map((point, index) =>
         <circle
+          style={{
+            cursor: hover ? 'move' : 'default'
+          }}
+          r={5}
           key={index}
           data-aix={aix}
           data-pix={index}
           cx={point[0]}
           cy={point[1]}
-          r='5'
           onMouseDown={onPointMouseDown}
           onMouseUp={onPointMouseUp}
           onMouseEnter={onPointMouseEnter}
