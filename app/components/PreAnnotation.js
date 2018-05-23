@@ -1,25 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {
-  getLabelPosition,
-  getPathD,
-  keyPressHandler,
-} from '../utils/annotation';
 
 const PreAnnotation = ({
   imageWidth,
   imageHeight,
-  hix,
   aix,
   pix,
   mode,
   preAnnotation,
-  hover,
-  onLabelChange,
-  onPolygonMouseDown,
-  onPolygonMouseUp,
-  onPolygonMouseEnter,
-  onPolygonMouseLeave,
   onPrePointMouseEnter,
   onPrePointMouseLeave,
   onPrePointClick,
