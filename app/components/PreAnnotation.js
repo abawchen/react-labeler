@@ -27,22 +27,42 @@ const PreAnnotation = ({
   <svg
     className='ori'
     style={{
-      display: (aix === -1 && mode === 'ADD_POINT') ? 'block' : 'none'
+      display: mode === 'ADD_POINT' ? 'block' : 'none'
     }}
   >
+    {
+      /*
+      for (let i = 0; i < preAnnotation.points.length - 1; i ++) {
+        return (
+          <span>i</span>
+        )
+      }
+      */
+      preAnnotation.points.map((curPoint, index) => {
+        if (index === 0) {
+          return;
+        }
+        const prePoint = preAnnotation.points[index - 1];
+        return (
+          <line
+            x1={prePoint[0]}
+            y1={prePoint[1]}
+            x2={curPoint[0]}
+            y2={curPoint[1]}
+          />
+        )
+      })
+    }
     <path
       className='ori'
-      style={{
-        visibility: hix === aix ? 'visible' : 'hidden'
-      }}
-      d={getPathD(imageWidth, imageHeight, preAnnotation.points)}
-      fill='gray'
-      fill-rule='evenodd'
-      opacity='0.5'
+      // d={getPathD(imageWidth, imageHeight, false, preAnnotation.points)}
+      // fill='blue'
+      // fill-rule='evenodd'
+      // opacity='0.5'
     />
     <polygon
-      data-aix={aix}
-      points={preAnnotation.points}
+      // data-aix={aix}
+      // points={preAnnotation.points}
       // onMouseDown={onPolygonMouseDown}
       // onMouseUp={onPolygonMouseUp}
       // onMouseEnter={onPolygonMouseEnter}
@@ -53,16 +73,16 @@ const PreAnnotation = ({
     {
       preAnnotation.points.map((point, index) =>
         <circle
+          r={5}
           key={index}
           data-aix={aix}
           data-pix={index}
           cx={point[0]}
           cy={point[1]}
-          r='5'
-          onMouseDown={onPointMouseDown}
-          onMouseUp={onPointMouseUp}
-          onMouseEnter={onPointMouseEnter}
-          onMouseLeave={onPointMouseLeave}
+          //onMouseDown={onPointMouseDown}
+          //onMouseUp={onPointMouseUp}cy={point[1]}
+          onMouseEnter={index === 0 && onPointMouseEnter}
+          onMouseLeave={index === 0 && onPointMouseLeave}
         />
       )
     }

@@ -30,8 +30,8 @@ const annotatorReducers = handleActions({
     ADD_POINT: (state, { payload }) => {
       let e = payload.event;
       if (state.get('annotationShape') === 'polygon') {
-        let annotation = state
-          .get('annotation', Immutable.fromJS({
+        let preAnnotation = state
+          .get('preAnnotation', Immutable.fromJS({
             id: '',
             shape: 'polygon',
             points: []
@@ -40,7 +40,7 @@ const annotatorReducers = handleActions({
             Immutable.fromJS([e.pageX, e.pageY])));
         return state
           .set('mode', ADD_POINT)
-          .set('annotation', annotation);
+          .set('preAnnotation', preAnnotation);
       }
       return state;
     },

@@ -7,13 +7,15 @@ export const getLabelPosition = (points, axis) => {
       : Math.min(acc, cur), axis === 0 ? 0 : Infinity);
 }
 
-export const getPathD = (imageWidth, imageHeight, points) => {
+export const getPathD = (imageWidth, imageHeight, isClosed, points) => {
   let d = `M0,0 L${imageWidth},0 L${imageWidth},${imageHeight} L0,${imageHeight} z`;
   d += points
     .reduce((acc, point, index) => {
       return `${acc} ${index === 0 ? 'M' : 'L'}${point[0]},${point[1]}`
     }, '');
-  d += ' z';
+  if (isClosed) {
+    d += ' z';
+  }
   return d;
 }
 

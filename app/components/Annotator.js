@@ -8,6 +8,7 @@ const Annotator = ({
   imageHeight,
   hix,
   aix,
+  pix,
   src,
   mode,
   preAnnotation,
@@ -42,9 +43,13 @@ const Annotator = ({
     >
       {
         <PreAnnotation
+          imageWidth={imageWidth}
+          imageHeight={imageHeight}
           aix={-1}
           mode={mode}
           preAnnotation={preAnnotation}
+          onPointMouseEnter={onPointMouseEnter}
+          onPointMouseLeave={onPointMouseLeave}
         />
       }
       {
