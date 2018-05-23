@@ -4,7 +4,7 @@ export const getLabelPosition = (points, axis) => {
     .reduce((acc, cur) =>
       axis === 0
       ? Math.max(acc, cur) + 5
-      : Math.min(acc, cur), 0);
+      : Math.min(acc, cur), axis === 0 ? 0 : Infinity);
 }
 
 export const getPathD = (imageWidth, imageHeight, points) => {
@@ -22,4 +22,3 @@ export const keyPressHandler = (event) => {
      event.target.blur();
    }
 }
-
