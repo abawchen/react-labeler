@@ -151,7 +151,15 @@ const annotatorReducers = handleActions({
       return state.get('mode') === DEFAULT
         ? state.set('hix', -1)
         : state;
-    }
+    },
+    ENTER_PRE_POINT: (state, { payload }) => {
+      return state
+        .set('pix', parseInt(payload.event.currentTarget.dataset.pix));
+    },
+    LEAVE_PRE_POINT: (state, { payload }) => {
+      return state
+        .set('pix', -1);
+    },
   },
   AnnotatorState
 );

@@ -15,6 +15,8 @@ import {
   deselectPolygon,
   enterPolygon,
   leavePolygon,
+  enterPrePoint,
+  leavePrePoint,
 } from '../actions';
 
 const mapStateToProps = (state) => {
@@ -62,6 +64,12 @@ const mapDispatchToProps = (dispatch) => {
     onPolygonMouseLeave: (event) => {
       dispatch(leavePolygon({ event }));
     },
+    onPrePointMouseEnter: (event) => {
+      dispatch(enterPrePoint({ event }));
+    },
+    onPrePointMouseLeave: (event) => {
+      dispatch(leavePrePoint({ event }));
+    }
   }
 }
 

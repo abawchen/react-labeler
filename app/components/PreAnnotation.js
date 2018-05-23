@@ -11,18 +11,17 @@ const PreAnnotation = ({
   imageHeight,
   hix,
   aix,
+  pix,
   mode,
   preAnnotation,
   hover,
   onLabelChange,
-  onPointMouseDown,
-  onPointMouseUp,
-  onPointMouseEnter,
-  onPointMouseLeave,
   onPolygonMouseDown,
   onPolygonMouseUp,
   onPolygonMouseEnter,
   onPolygonMouseLeave,
+  onPrePointMouseEnter,
+  onPrePointMouseLeave,
 }) => (
   <svg
     className='ori'
@@ -31,13 +30,6 @@ const PreAnnotation = ({
     }}
   >
     {
-      /*
-      for (let i = 0; i < preAnnotation.points.length - 1; i ++) {
-        return (
-          <span>i</span>
-        )
-      }
-      */
       preAnnotation.points.map((curPoint, index) => {
         if (index === 0) {
           return;
@@ -73,16 +65,18 @@ const PreAnnotation = ({
     {
       preAnnotation.points.map((point, index) =>
         <circle
-          r={5}
+          r={ pix === index ? 8 : 5 }
           key={index}
           data-aix={aix}
           data-pix={index}
           cx={point[0]}
           cy={point[1]}
-          //onMouseDown={onPointMouseDown}
-          //onMouseUp={onPointMouseUp}cy={point[1]}
-          onMouseEnter={index === 0 && onPointMouseEnter}
-          onMouseLeave={index === 0 && onPointMouseLeave}
+          onMouseEnter={index === 0 && onPrePointMouseEnter}
+          onMouseLeave={index === 0 && onPrePointMouseLeave}
+          style={{
+            fill: pix === index ? 'lime' : 'white',
+            stroke: pix === index ? 'blue' : 'black',
+          }}
         />
       )
     }
