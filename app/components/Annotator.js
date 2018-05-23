@@ -44,7 +44,7 @@ const Annotator = ({
       tabIndex='0'
       width={imageWidth}
       height={imageHeight}
-      //onMouseMove={onMouseMove}
+      onMouseMove={mode.startsWith('MOVE') ? onMouseMove : null}
       onKeyDown={onKeyDown}
       onClick={onAddPoint}
     >
