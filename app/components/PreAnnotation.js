@@ -18,7 +18,7 @@ const PreAnnotation = ({
   <svg
     className='ori'
     style={{
-      display: mode === 'ADD_POINT' ? 'block' : 'none'
+      display: mode === 'PRE_ANNOTATION' ? 'block' : 'none'
     }}
     // onMouseDown={annotationShape !== 'polygon' && onPreAnnotationMouseDown}
     // onMouseUp={annotationShape !== 'polygon' && onPreAnnotationMouseUp}

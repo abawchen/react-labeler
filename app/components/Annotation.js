@@ -29,7 +29,7 @@ const Annotation = ({
   <svg
     className='ori'
     style={{
-      display: (hix === -1 || hover) && mode !== 'ADD_POINT' ? 'block' : 'none'
+      display: (hix === -1 || hover) && mode !== 'PRE_ANNOTATION' ? 'block' : 'none'
     }}
   >
     <path

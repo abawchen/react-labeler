@@ -3,6 +3,7 @@ import { handleActions } from 'redux-actions';
 import { AnnotatorState } from '../../constants/models';
 import {
    DEFAULT,
+   PRE_ANNOTATION,
    ADD_POINT,
    MOVE_POINT,
    MOVE_SHAPE,
@@ -23,8 +24,12 @@ const annotatorReducers = handleActions({
     },
     SET_ANNOTATION_SHAPE: (state, { payload }) => {
       let e = payload.event;
-      return state
-        .set('annotationShape', state.getIn(['keyMap', e.key], ''));
+      let shape = state.getIn(['keyMap', e.key], '');
+      return shape === ''
+        ? state
+        : state
+          .set('mode', PRE_ANNOTATION)
+          .set('annotationShape', shape);
     },
     CHANGE_LABEL_TEXT: (state, { payload }) => {
       let e = payload.event;
@@ -41,14 +46,14 @@ const annotatorReducers = handleActions({
           .update('points', list => list.push(
             Immutable.fromJS([e.pageX, e.pageY])));
         return state
-          .set('mode', ADD_POINT)
+          //.set('mode', ADD_POINT)
           .set('preAnnotation', preAnnotation);
       }
       return state;
     },
     MOVE: (state, { payload }) => {
       let mode = state.get('mode');
-      if (mode === DEFAULT || mode === ADD_POINT) {
+      if (!mode.startsWith('MOVE')) {
         return state;
       }
       // TODO: Refactor

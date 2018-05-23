@@ -45,8 +45,8 @@ const Annotator = ({
       width={imageWidth}
       height={imageHeight}
       onMouseMove={mode.startsWith('MOVE') ? onMouseMove : null}
-      onKeyDown={onKeyDown}
-      onClick={onAddPoint}
+      onKeyDown={hix === -1 ? onKeyDown : null}
+      onClick={mode === 'PRE_ANNOTATION' ? onAddPoint : null}
     >
       {
         <PreAnnotation
