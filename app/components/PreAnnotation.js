@@ -6,7 +6,11 @@ const PreAnnotation = ({
   aix,
   pix,
   mode,
+  annotationShape,
   preAnnotation,
+  onPreAnnotationMouseDown,
+  onPreAnnotationMouseUp,
+  onPreAnnotationMouseMove,
   onPrePointMouseEnter,
   onPrePointMouseLeave,
   onPrePointClick,
@@ -16,22 +20,27 @@ const PreAnnotation = ({
     style={{
       display: mode === 'ADD_POINT' ? 'block' : 'none'
     }}
+    onMouseDown={annotationShape !== 'polygon' && onPreAnnotationMouseDown}
+    onMouseUp={annotationShape !== 'polygon' && onPreAnnotationMouseUp}
+    onMouseMove={annotationShape !== 'polygon' && onPreAnnotationMouseMove}
   >
     {
-      preAnnotation.points.map((curPoint, index) => {
-        if (index === 0) {
-          return;
-        }
-        const prePoint = preAnnotation.points[index - 1];
-        return (
-          <line
-            x1={prePoint[0]}
-            y1={prePoint[1]}
-            x2={curPoint[0]}
-            y2={curPoint[1]}
-          />
-        )
-      })
+      annotationShape === 'polygon'
+        ? preAnnotation.points.map((curPoint, index) => {
+          if (index === 0) {
+            return;
+          }
+          const prePoint = preAnnotation.points[index - 1];
+          return (
+            <line
+              x1={prePoint[0]}
+              y1={prePoint[1]}
+              x2={curPoint[0]}
+              y2={curPoint[1]}
+            />
+          )
+        })
+        : null
     }
     {
       preAnnotation.points.map((point, index) =>

@@ -11,6 +11,7 @@ const Annotator = ({
   pix,
   src,
   mode,
+  annotationShape,
   preAnnotation,
   annotations,
   onImageLoad,
@@ -26,6 +27,9 @@ const Annotator = ({
   onPolygonMouseUp,
   onPolygonMouseEnter,
   onPolygonMouseLeave,
+  onPreAnnotationMouseDown,
+  onPreAnnotationMouseUp,
+  onPreAnnotationMouseMove,
   onPrePointMouseEnter,
   onPrePointMouseLeave,
   onPrePointClick,
@@ -40,7 +44,7 @@ const Annotator = ({
       tabIndex='0'
       width={imageWidth}
       height={imageHeight}
-      onMouseMove={onMouseMove}
+      //onMouseMove={onMouseMove}
       onKeyDown={onKeyDown}
       onClick={onAddPoint}
     >
@@ -51,7 +55,11 @@ const Annotator = ({
           aix={-1}
           pix={pix}
           mode={mode}
+          annotationShape={annotationShape}
           preAnnotation={preAnnotation}
+          onPreAnnotationMouseDown={onPreAnnotationMouseDown}
+          onPreAnnotationMouseUp={onPreAnnotationMouseUp}
+          onPreAnnotationMouseMove={onPreAnnotationMouseMove}
           onPrePointMouseEnter={onPrePointMouseEnter}
           onPrePointMouseLeave={onPrePointMouseLeave}
           onPrePointClick={onPrePointClick}

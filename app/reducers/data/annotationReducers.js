@@ -154,6 +154,15 @@ const annotatorReducers = handleActions({
         ? state.set('hix', -1)
         : state;
     },
+    BEGIN_TO_DRAG_PRE_ANNOTATION: (state, { payload }) => {
+      return state;
+    },
+    END_OF_DRAG_PRE_ANNOTATION: (state, { payload }) => {
+      return state;
+    },
+    DRAG_PRE_ANNOTATION: (state, { payload }) => {
+      return state;
+    },
     ENTER_PRE_POINT: (state, { payload }) => {
       return state
         .set('pix', parseInt(payload.event.currentTarget.dataset.pix));
