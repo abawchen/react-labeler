@@ -8,6 +8,7 @@ const Annotator = ({
   hix,
   aix,
   src,
+  mode,
   annotation,
   annotations,
   onImageLoad,
@@ -38,6 +39,13 @@ const Annotator = ({
       onKeyDown={onKeyDown}
       onClick={onAddPoint}
     >
+      {
+        <Annotation
+          aix={-1}
+          mode={mode}
+          annotation={annotation}
+        />
+      }
       {
         annotations.map((annotation, index) => (
           <Annotation

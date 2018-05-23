@@ -1,38 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+  getLabelPosition,
+  getPathD,
+  keyPressHandler,
+} from '../utils/annotation';
 
-import Point from './Point';
-
-let getLabelPosition = (points, axis) => {
-  return points
-    .map(point => point[axis])
-    .reduce((acc, cur) =>
-      axis === 0
-      ? Math.max(acc, cur) + 5
-      : Math.min(acc, cur) );
-}
-
-let keyPressHandler = (event) => {
-   if (event.key == 'Enter') {
-     event.target.blur();
-   }
-}
-
-let getPathD = (imageWidth, imageHeight, points) => {
-  let d = `M0,0 L${imageWidth},0 L${imageWidth},${imageHeight} L0,${imageHeight} z`;
-  d += points
-    .reduce((acc, point, index) => {
-      return `${acc} ${index === 0 ? 'M' : 'L'}${point[0]},${point[1]}`
-    }, '');
-  d += ' z';
-  return d;
-}
 
 const Annotation = ({
   imageWidth,
   imageHeight,
   hix,
   aix,
+  mode,
   annotation,
   hover,
   onLabelChange,
@@ -48,13 +28,14 @@ const Annotation = ({
   <svg
     className='ori'
     style={{
-      display: hix == -1 || hix == aix ? 'block' : 'none'
+      display: (hix === -1 || hix === aix) || (aix === -1 && mode === 'ADD_POINT')
+        ? 'block' : 'none'
     }}
   >
     <path
       className='ori'
       style={{
-        visibility: hix == aix ? 'visible' : 'hidden'
+        visibility: hix === aix ? 'visible' : 'hidden'
       }}
       d={getPathD(imageWidth, imageHeight, annotation.points)}
       fill='gray'
