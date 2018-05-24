@@ -20,6 +20,7 @@ export const getPathD = (imageWidth, imageHeight, isClosed, points) => {
 }
 
 export const keyPressHandler = (event) => {
+   console.log('keyPressHandler');
    if (event.key == 'Enter') {
      event.target.blur();
    }

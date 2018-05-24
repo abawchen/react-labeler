@@ -15,7 +15,7 @@ const PreAnnotation = ({
   onPrePointMouseLeave,
   onPrePointClick,
 }) => (
-  <svg
+  <g
     className='ori'
     style={{
       display: mode === 'PRE_ANNOTATION' ? 'block' : 'none'
@@ -62,7 +62,7 @@ const PreAnnotation = ({
         />
       )
     }
-  </svg>
+  </g>
 )
 
 export default PreAnnotation;

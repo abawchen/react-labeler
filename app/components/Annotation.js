@@ -26,7 +26,7 @@ const Annotation = ({
   onPolygonMouseEnter,
   onPolygonMouseLeave,
 }) => (
-  <svg
+  <g
     className='ori'
     style={{
       display: (hix === -1 || hover) && mode !== 'PRE_ANNOTATION' ? 'block' : 'none'
@@ -91,7 +91,7 @@ const Annotation = ({
         onKeyPress={keyPressHandler}
       />
     </foreignObject>
-  </svg>
+  </g>
 )
 
 export default Annotation;
