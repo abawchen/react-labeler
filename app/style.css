@@ -56,3 +56,8 @@ polygon:hover {
   /* fill: rgba(124,240,10,0.8); */
   cursor: move;
 }
+
+.overlay {
+  fill: gray;
+  opacity: 0.5;
+}

@@ -46,24 +46,25 @@ const Annotator = ({
       height={imageHeight}
       onMouseMove={mode.startsWith('MOVE') ? onMouseMove : null}
       onKeyDown={hix === -1 ? onKeyDown : null}
-      onClick={mode === 'PRE_ANNOTATION' ? onAddPoint : null}
     >
       {
-        <PreAnnotation
-          imageWidth={imageWidth}
-          imageHeight={imageHeight}
-          aix={-1}
-          pix={pix}
-          mode={mode}
-          annotationShape={annotationShape}
-          preAnnotation={preAnnotation}
-          onPreAnnotationMouseDown={onPreAnnotationMouseDown}
-          onPreAnnotationMouseUp={onPreAnnotationMouseUp}
-          onPreAnnotationMouseMove={onPreAnnotationMouseMove}
-          onPrePointMouseEnter={onPrePointMouseEnter}
-          onPrePointMouseLeave={onPrePointMouseLeave}
-          onPrePointClick={onPrePointClick}
-        />
+        mode === 'PRE_ANNOTATION'
+          ? <PreAnnotation
+            imageWidth={imageWidth}
+            imageHeight={imageHeight}
+            aix={-1}
+            pix={pix}
+            mode={mode}
+            annotationShape={annotationShape}
+            preAnnotation={preAnnotation}
+            onAddPoint={onAddPoint}
+            onPreAnnotationMouseDown={onPreAnnotationMouseDown}
+            onPreAnnotationMouseUp={onPreAnnotationMouseUp}
+            onPreAnnotationMouseMove={onPreAnnotationMouseMove}
+            onPrePointMouseEnter={onPrePointMouseEnter}
+            onPrePointMouseLeave={onPrePointMouseLeave}
+            onPrePointClick={onPrePointClick}
+          /> : null
       }
       {
         annotations.map((annotation, index) => (

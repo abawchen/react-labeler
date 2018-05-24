@@ -8,6 +8,7 @@ const PreAnnotation = ({
   mode,
   annotationShape,
   preAnnotation,
+  onAddPoint,
   onPreAnnotationMouseDown,
   onPreAnnotationMouseUp,
   onPreAnnotationMouseMove,
@@ -15,15 +16,13 @@ const PreAnnotation = ({
   onPrePointMouseLeave,
   onPrePointClick,
 }) => (
-  <g
-    className='ori'
-    style={{
-      display: mode === 'PRE_ANNOTATION' ? 'block' : 'none'
-    }}
-    // onMouseDown={annotationShape !== 'polygon' && onPreAnnotationMouseDown}
-    // onMouseUp={annotationShape !== 'polygon' && onPreAnnotationMouseUp}
-    // onMouseMove={annotationShape !== 'polygon' && onPreAnnotationMouseMove}
-  >
+  <g>
+    <rect
+      className='overlay'
+      width={imageWidth}
+      height={imageHeight}
+      onClick={annotationShape === 'polygon' ? onAddPoint : null}
+    />
     {
       annotationShape === 'polygon'
         ? preAnnotation.points.map((curPoint, index) => {
@@ -46,7 +45,7 @@ const PreAnnotation = ({
     {
       preAnnotation.points.map((point, index) =>
         <circle
-          r={ pix === index ? 8 : 5 }
+          r={pix === index ? 8 : 5}
           key={index}
           data-aix={aix}
           data-pix={index}
