@@ -49,22 +49,28 @@ const Annotator = ({
     >
       {
         mode === 'PRE_ANNOTATION'
-          ? <PreAnnotation
-              imageWidth={imageWidth}
-              imageHeight={imageHeight}
-              aix={-1}
-              pix={pix}
-              mode={mode}
-              annotationShape={annotationShape}
-              preAnnotation={preAnnotation}
-              onAddPoint={onAddPoint}
-              onPreAnnotationMouseDown={onPreAnnotationMouseDown}
-              onPreAnnotationMouseUp={onPreAnnotationMouseUp}
-              onPreAnnotationMouseMove={onPreAnnotationMouseMove}
-              onPrePointMouseEnter={onPrePointMouseEnter}
-              onPrePointMouseLeave={onPrePointMouseLeave}
-              onPrePointClick={onPrePointClick}
-            />
+          ? annotationShape === 'polygon'
+            ? <PrePolygon
+                imageWidth={imageWidth}
+                imageHeight={imageHeight}
+                aix={-1}
+                pix={pix}
+                preAnnotation={preAnnotation}
+                onAddPoint={onAddPoint}
+                onPrePointMouseEnter={onPrePointMouseEnter}
+                onPrePointMouseLeave={onPrePointMouseLeave}
+                onPrePointClick={onPrePointClick}
+              />
+            : <PreRectangle
+                imageWidth={imageWidth}
+                imageHeight={imageHeight}
+                aix={-1}
+                pix={pix}
+                preAnnotation={preAnnotation}
+                onPreAnnotationMouseDown={onPreAnnotationMouseDown}
+                onPreAnnotationMouseUp={onPreAnnotationMouseUp}
+                onPreAnnotationMouseMove={onPreAnnotationMouseMove}
+              />
           : null
       }
       {
