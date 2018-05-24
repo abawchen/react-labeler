@@ -46,7 +46,6 @@ const annotatorReducers = handleActions({
           .update('points', list => list.push(
             Immutable.fromJS([e.pageX, e.pageY])));
         return state
-          //.set('mode', ADD_POINT)
           .set('preAnnotation', preAnnotation);
       }
       return state;
@@ -121,7 +120,6 @@ const annotatorReducers = handleActions({
     DESELECT_POINT: (state, { payload }) => {
       return state
         .set('mode', DEFAULT)
-        .removeIn(['coords', 'x'])
         .set('aix', -1)
         .set('pix', -1);
     },
@@ -146,7 +144,6 @@ const annotatorReducers = handleActions({
     DESELECT_SHAPE: (state, { payload }) => {
       return state
         .set('mode', DEFAULT)
-        .removeIn(['coords', 'x'])
         .set('aix', -1)
         .set('pix', -1);
     },
@@ -160,13 +157,61 @@ const annotatorReducers = handleActions({
         : state;
     },
     BEGIN_TO_DRAG_PRE_ANNOTATION: (state, { payload }) => {
-      return state;
+      let e = payload.event;
+      let preAnnotation = defaultPreAnnotation
+        .set('shape', 'rectangle')
+        .set('points', Immutable.fromJS([
+          [e.pageX, e.pageY],
+          [e.pageX, e.pageY],
+          [e.pageX, e.pageY],
+          [e.pageX, e.pageY],
+        ]));
+      return state
+        .setIn(['coords', 'x'], e.pageX)
+        .setIn(['coords', 'y'], e.pageY)
+        .set('preAnnotation', preAnnotation)
+        .set('pix', 2);
+      /*
+      return state
+        .set('mode', 'DEFAULT')
+        .set('annotationShape', '')
+        .set('pix', 2)
+        .update('annotations', list => list.push(annotation))
+        .set('hix', state.get('annotations').size);
+      */
     },
     END_OF_DRAG_PRE_ANNOTATION: (state, { payload }) => {
       return state;
     },
     DRAG_PRE_ANNOTATION: (state, { payload }) => {
-      return state;
+      let points = state.getIn(['preAnnotation', 'points'])
+      if (points.size === 0) {
+        return state;
+      }
+      // TODO: Consolidate duplicate code.
+      let e = payload.event;
+      let xDiff = state.getIn(['coords', 'x']) - e.pageX;
+      let yDiff = state.getIn(['coords', 'y']) - e.pageY;
+      let pix = parseInt(state.get('pix'));
+      let point = points.get(pix);
+      let newX = point.get(0) - xDiff;
+      let newY = point.get(1) - yDiff;
+      let previx = (pix - 1 + 4) % 4;
+      let nextix = (pix + 1) % 4;
+      let prevPoint = points.get(previx);
+      let xix = nextix;
+      let yix = previx;
+      if (prevPoint.get(0) === point.get(0)) {
+         xix = previx;
+         yix = nextix;
+      }
+      return state
+        .setIn(['coords', 'x'], e.pageX)
+        .setIn(['coords', 'y'], e.pageY)
+        .setIn(['preAnnotation', 'points', pix, 0], newX)
+        .setIn(['preAnnotation', 'points', pix, 1], newY)
+        .setIn(['preAnnotation', 'points', xix, 0], newX)
+        .setIn(['preAnnotation', 'points', yix, 1], newY);
     },
     ENTER_PRE_POINT: (state, { payload }) => {
       return state

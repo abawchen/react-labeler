@@ -22,6 +22,9 @@ const PreAnnotation = ({
       width={imageWidth}
       height={imageHeight}
       onClick={annotationShape === 'polygon' ? onAddPoint : null}
+      onMouseDown={annotationShape === 'rectangle' ? onPreAnnotationMouseDown : null}
+      onMouseMove={annotationShape === 'rectangle' ? onPreAnnotationMouseMove : null}
+      //onMouseUp={annotationShape === 'rectangle' ? onPreAnnotationMouseUp : null}
     />
     {
       annotationShape === 'polygon'
