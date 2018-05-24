@@ -15,6 +15,16 @@ const defaultPreAnnotation = Immutable.fromJS({
   points: []
 });
 
+const pushToAnnotations = (state) => {
+    return state
+      .set('mode', 'DEFAULT')
+      .set('annotationShape', '')
+      .set('pix', -1)
+      .update('annotations', list => list.push(state.get('preAnnotation')))
+      .set('preAnnotation', defaultPreAnnotation)
+      .set('hix', state.get('annotations').size);
+}
+
 const annotatorReducers = handleActions({
     ON_IMAGE_LOAD: (state, { payload }) => {
       let e = payload.event;
@@ -171,17 +181,9 @@ const annotatorReducers = handleActions({
         .setIn(['coords', 'y'], e.pageY)
         .set('preAnnotation', preAnnotation)
         .set('pix', 2);
-      /*
-      return state
-        .set('mode', 'DEFAULT')
-        .set('annotationShape', '')
-        .set('pix', 2)
-        .update('annotations', list => list.push(annotation))
-        .set('hix', state.get('annotations').size);
-      */
     },
     END_OF_DRAG_PRE_ANNOTATION: (state, { payload }) => {
-      return state;
+      return pushToAnnotations(state);
     },
     DRAG_PRE_ANNOTATION: (state, { payload }) => {
       let points = state.getIn(['preAnnotation', 'points'])
@@ -222,13 +224,7 @@ const annotatorReducers = handleActions({
         .set('pix', -1);
     },
     CLICK_PRE_POINT: (state, { payload }) => {
-      return state
-        .set('mode', 'DEFAULT')
-        .set('annotationShape', '')
-        .set('pix', -1)
-        .update('annotations', list => list.push(state.get('preAnnotation')))
-        .set('preAnnotation', defaultPreAnnotation)
-        .set('hix', state.get('annotations').size);
+      return pushToAnnotations(state);
     },
   },
   AnnotatorState

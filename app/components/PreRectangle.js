@@ -1,4 +1,5 @@
 import React from 'react';
+import { getPathD } from '../utils/annotation';
 
 const PreRectangle = ({
   imageWidth,
@@ -11,13 +12,24 @@ const PreRectangle = ({
   onPreAnnotationMouseMove,
 }) => (
   <g>
+    <path
+      className='ori'
+      fill='gray'
+      fill-rule='evenodd'
+      opacity='0.5'
+      d={getPathD(imageWidth, imageHeight, true, preAnnotation.points)}
+    />
     <rect
-      className='overlay'
+      opacity={0}
       width={imageWidth}
       height={imageHeight}
       onMouseDown={onPreAnnotationMouseDown}
+      onMouseMove={!!preAnnotation.points.length ? onPreAnnotationMouseMove : null}
+    />
+    <polygon
+      points={preAnnotation.points}
+      // XXXX: Not work in rect element!?
       onMouseUp={onPreAnnotationMouseUp}
-      onMouseMove={onPreAnnotationMouseMove}
     />
     {
       preAnnotation.points.map((point, index) =>
