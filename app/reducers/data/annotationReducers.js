@@ -32,7 +32,7 @@ const annotatorReducers = handleActions({
         .set('imageWidth', e.target.width)
         .set('imageHeight', e.target.height);
     },
-    SET_ANNOTATION_SHAPE: (state, { payload }) => {
+    SHORTCUT: (state, { payload }) => {
       let e = payload.event;
       let shape = state.getIn(['keyMap', e.key], '');
       return shape === ''

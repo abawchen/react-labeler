@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions';
 import {
   ON_IMAGE_LOAD,
-  SET_ANNOTATION_SHAPE,
+  SHORTCUT,
   CHANGE_LABEL_TEXT,
   MOVE,
   SELECT_POINT,
@@ -22,7 +22,7 @@ import {
 } from '../constants/actionTypes';
 
 export const onImageLoad = createAction(ON_IMAGE_LOAD);
-export const setAnnotationShape = createAction(SET_ANNOTATION_SHAPE);
+export const shortcut = createAction(SHORTCUT);
 export const changeLabelText = createAction(CHANGE_LABEL_TEXT);
 export const move = createAction(MOVE);
 

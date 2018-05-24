@@ -3,7 +3,7 @@ import Annotator from '../components/Annotator';
 
 import {
   onImageLoad,
-  setAnnotationShape,
+  shortcut,
   changeLabelText,
   move,
   addPoint,
@@ -36,7 +36,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(addPoint({ event }));
     },
     onKeyDown: (event) => {
-      dispatch(setAnnotationShape({ event }));
+      dispatch(shortcut({ event }));
     },
     onLabelChange: (event) => {
        dispatch(changeLabelText({ event }));
