@@ -34,12 +34,20 @@ const annotatorReducers = handleActions({
     },
     SHORTCUT: (state, { payload }) => {
       let e = payload.event;
+      if (e.key === 'Escape' && state.get('mode') === PRE_ANNOTATION) {
+        return state
+          .set('mode', DEFAULT)
+          .set('preAnnotation', defaultPreAnnotation);
+      }
+
       let shape = state.getIn(['keyMap', e.key], '');
-      return shape === ''
-        ? state
-        : state
+      if (shape !== '') {
+        return state
           .set('mode', PRE_ANNOTATION)
           .set('annotationShape', shape);
+      }
+
+      return state;
     },
     CHANGE_LABEL_TEXT: (state, { payload }) => {
       let e = payload.event;
