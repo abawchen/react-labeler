@@ -57,4 +57,4 @@ const PrePolygon = ({
   </g>
 )
 
-export default PreAnnotation;
+export default PrePolygon;

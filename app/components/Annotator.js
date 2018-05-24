@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Annotation from './Annotation';
-import PreAnnotation from './PreAnnotation';
+import PrePolygon from './PrePolygon';
+import PreRectangle from './PreRectangle';
 
 const Annotator = ({
   imageWidth,
