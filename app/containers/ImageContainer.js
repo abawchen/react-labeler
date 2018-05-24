@@ -15,6 +15,9 @@ import {
   deselectPolygon,
   enterPolygon,
   leavePolygon,
+  beginToDragPreAnnotation,
+  endOfDragPreAnnotation,
+  dragPreAnnotation,
   enterPrePoint,
   leavePrePoint,
   clickPrePoint,
@@ -64,6 +67,15 @@ const mapDispatchToProps = (dispatch) => {
     },
     onPolygonMouseLeave: (event) => {
       dispatch(leavePolygon({ event }));
+    },
+    onPreAnnotationMouseDown: (event) => {
+      dispatch(beginToDragPreAnnotation({ event }));
+    },
+    onPreAnnotationMouseUp: (event) => {
+      dispatch(endOfDragPreAnnotation({ event }));
+    },
+    onPreAnnotationMouseMove: (event) => {
+      dispatch(dragPreAnnotation({ event }));
     },
     onPrePointMouseEnter: (event) => {
       dispatch(enterPrePoint({ event }));

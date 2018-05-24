@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Annotation from './Annotation';
-import PreAnnotation from './PreAnnotation';
+import PrePolygon from './PrePolygon';
+import PreRectangle from './PreRectangle';
 
 const Annotator = ({
   imageWidth,
@@ -11,6 +12,7 @@ const Annotator = ({
   pix,
   src,
   mode,
+  annotationShape,
   preAnnotation,
   annotations,
   onImageLoad,
@@ -26,6 +28,9 @@ const Annotator = ({
   onPolygonMouseUp,
   onPolygonMouseEnter,
   onPolygonMouseLeave,
+  onPreAnnotationMouseDown,
+  onPreAnnotationMouseUp,
+  onPreAnnotationMouseMove,
   onPrePointMouseEnter,
   onPrePointMouseLeave,
   onPrePointClick,
@@ -40,22 +45,34 @@ const Annotator = ({
       tabIndex='0'
       width={imageWidth}
       height={imageHeight}
-      onMouseMove={onMouseMove}
-      onKeyDown={onKeyDown}
-      onClick={onAddPoint}
+      onMouseMove={mode.startsWith('MOVE') ? onMouseMove : null}
+      onKeyDown={hix === -1 ? onKeyDown : null}
     >
       {
-        <PreAnnotation
-          imageWidth={imageWidth}
-          imageHeight={imageHeight}
-          aix={-1}
-          pix={pix}
-          mode={mode}
-          preAnnotation={preAnnotation}
-          onPrePointMouseEnter={onPrePointMouseEnter}
-          onPrePointMouseLeave={onPrePointMouseLeave}
-          onPrePointClick={onPrePointClick}
-        />
+        mode === 'PRE_ANNOTATION'
+          ? annotationShape === 'polygon'
+            ? <PrePolygon
+                imageWidth={imageWidth}
+                imageHeight={imageHeight}
+                aix={-1}
+                pix={pix}
+                preAnnotation={preAnnotation}
+                onAddPoint={onAddPoint}
+                onPrePointMouseEnter={onPrePointMouseEnter}
+                onPrePointMouseLeave={onPrePointMouseLeave}
+                onPrePointClick={onPrePointClick}
+              />
+            : <PreRectangle
+                imageWidth={imageWidth}
+                imageHeight={imageHeight}
+                aix={-1}
+                pix={pix}
+                preAnnotation={preAnnotation}
+                onPreAnnotationMouseDown={onPreAnnotationMouseDown}
+                onPreAnnotationMouseUp={onPreAnnotationMouseUp}
+                onPreAnnotationMouseMove={onPreAnnotationMouseMove}
+              />
+          : null
       }
       {
         annotations.map((annotation, index) => (
