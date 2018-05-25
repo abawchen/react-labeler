@@ -1,6 +1,6 @@
 import Immutable from 'immutable';
-import { handleActions } from 'redux-actions';
-import { AnnotatorState } from '../../constants/models';
+import {handleActions} from 'redux-actions';
+import {AnnotatorState} from '../../constants/models';
 import {
    DEFAULT,
    PRE_ANNOTATION,
