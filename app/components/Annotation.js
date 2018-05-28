@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {
   getLabelPosition,
   getPathD,
-  keyPressHandler,
+  keyDownHandler,
 } from '../utils/annotation';
 
 
@@ -17,6 +17,7 @@ const Annotation = ({
   annotation,
   hover,
   onLabelChange,
+  onDeleteAnnotation,
   onPointMouseDown,
   onPointMouseUp,
   onPointMouseEnter,
@@ -88,7 +89,7 @@ const Annotation = ({
         data-aix={aix}
         value={annotation.label}
         onChange={onLabelChange}
-        onKeyPress={keyPressHandler}
+        onKeyDown={(e) => keyDownHandler(e, onDeleteAnnotation, aix)}
       />
     </foreignObject>
   </g>

@@ -2,6 +2,7 @@ export const ON_IMAGE_LOAD = 'ON_IMAGE_LOAD';
 export const SHORTCUT = 'SHORTCUT';
 export const CHANGE_LABEL_TEXT = 'CHANGE_LABEL_TEXT';
 export const MOVE = 'MOVE';
+export const DELETE_ANNOTATION = 'DELETE_ANNOTATION';
 
 export const SELECT_POINT = 'SELECT_POINT';
 export const DESELECT_POINT = 'DESELECT_POINT';
@@ -20,7 +21,3 @@ export const DRAG_PRE_ANNOTATION = 'DRAG_PRE_ANNOTATION';
 export const ENTER_PRE_POINT = 'ENTER_PRE_POINT';
 export const LEAVE_PRE_POINT = 'LEAVE_PRE_POINT';
 export const CLICK_PRE_POINT = 'CLICK_PRE_POINT';
-
-export const CREATE = 'CREATE';
-export const DELETE = 'DELETE';
-export const EDIT = 'EDIT';

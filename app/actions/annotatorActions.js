@@ -4,6 +4,7 @@ import {
   SHORTCUT,
   CHANGE_LABEL_TEXT,
   MOVE,
+  DELETE_ANNOTATION,
   SELECT_POINT,
   DESELECT_POINT,
   ENTER_POINT,
@@ -25,6 +26,7 @@ export const onImageLoad = createAction(ON_IMAGE_LOAD);
 export const shortcut = createAction(SHORTCUT);
 export const changeLabelText = createAction(CHANGE_LABEL_TEXT);
 export const move = createAction(MOVE);
+export const deleteAnnotation = createAction(DELETE_ANNOTATION);
 
 export const selectPoint = createAction(SELECT_POINT);
 export const deselectPoint = createAction(DESELECT_POINT);

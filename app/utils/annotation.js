@@ -1,3 +1,5 @@
+import {toastr} from 'react-redux-toastr';
+
 export const getLabelPosition = (points, axis) => {
   return points
     .map(point => point[axis])
@@ -20,10 +22,16 @@ export const getPathD = (
   return d;
 }
 
-export const keyPressHandler = (event) => {
-   console.log('keyPressHandler');
+export const keyDownHandler = (event, deleteAnnotation, aix) => {
    if (event.key == 'Enter') {
      event.target.blur();
+   }
+   if (event.ctrlKey && event.keyCode === 68) {
+     const toastrOptions = {
+        onOk: () => deleteAnnotation(aix),
+     }
+     toastr.confirm('Are you sure to delete this annotation?', toastrOptions);
+     event.preventDefault();
    }
 }
 

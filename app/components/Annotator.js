@@ -17,6 +17,7 @@ const Annotator = ({
   annotations,
   onImageLoad,
   onLabelChange,
+  onDeleteAnnotation,
   onAddPoint,
   onMouseMove,
   onKeyDown,
@@ -85,6 +86,7 @@ const Annotator = ({
             mode={mode}
             hover={hix === index}
             annotation={annotation}
+            onDeleteAnnotation={onDeleteAnnotation}
             onLabelChange={onLabelChange}
             onPointMouseDown={onPointMouseDown}
             onPointMouseUp={onPointMouseUp}

@@ -6,6 +6,7 @@ import {
   shortcut,
   changeLabelText,
   move,
+  deleteAnnotation,
   addPoint,
   selectPoint,
   deselectPoint,
@@ -28,6 +29,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
+  //TODO: Not pass whole event object.
   return {
     onImageLoad: (event) => {
       dispatch(onImageLoad({ event }));
@@ -43,6 +45,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onMouseMove: (event) => {
       dispatch(move({ event }));
+    },
+    onDeleteAnnotation: (aix) => {
+      dispatch(deleteAnnotation(aix)); 
     },
     onPointMouseDown: (event) => {
       dispatch(selectPoint({ event }));

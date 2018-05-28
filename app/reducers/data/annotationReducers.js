@@ -126,6 +126,9 @@ const annotatorReducers = handleActions({
         }
       }
     },
+    DELETE_ANNOTATION: (state, { payload }) => {
+      return state.removeIn(['annotations', payload]);
+    },
     SELECT_POINT: (state, { payload }) => {
       let e = payload.event;
       return state
