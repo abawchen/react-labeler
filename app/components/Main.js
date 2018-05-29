@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ImageContainer from '../containers/ImageContainer';
+import LabelerContainer from '../containers/LabelerContainer';
 
 const Main = () => (
   <div>
-    <ImageContainer/>
+    <LabelerContainer/>
   </div>
 );
 

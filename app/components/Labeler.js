@@ -4,7 +4,7 @@ import Annotation from './Annotation';
 import PrePolygon from './PrePolygon';
 import PreRectangle from './PreRectangle';
 
-const Annotator = ({
+const Labeler = ({
   imageWidth,
   imageHeight,
   hix,
@@ -103,4 +103,4 @@ const Annotator = ({
   </div>
 )
 
-export default Annotator;
+export default Labeler;

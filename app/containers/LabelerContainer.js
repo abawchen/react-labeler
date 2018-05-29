@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
-import Annotator from '../components/Annotator';
-
+import Labeler from '../components/Labeler';
 import {
   onImageLoad,
   shortcut,
@@ -97,6 +96,6 @@ const mapDispatchToProps = (dispatch) => {
 const Annotations = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Annotator);
+)(Labeler);
 
 export default Annotations;
