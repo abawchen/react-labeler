@@ -1,7 +1,7 @@
 {
-  "name": "annotator",
+  "name": "react-labeler",
   "version": "0.0.1",
-  "description": "React image annotator component",
+  "description": "React image labeling component",
   "main": "./app/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,21 +9,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/abawchen/annotator.git"
+    "url": "git+https://github.com/abawchen/react-labeler.git"
   },
   "keywords": [
     "react",
     "image",
     "annotation",
     "annotator",
+    "labeler",
     "label"
   ],
   "author": "Abaw Chen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/abawchen/annotator/issues"
+    "url": "https://github.com/abawchen/react-labeler/issues"
   },
-  "homepage": "https://github.com/abawchen/annotator#readme",
+  "homepage": "https://github.com/abawchen/react-labeler#readme",
   "dependencies": {
     "immutable": "^3.8.2",
     "react": "^16.3.2",

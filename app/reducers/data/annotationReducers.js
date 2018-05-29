@@ -1,6 +1,6 @@
 import Immutable from 'immutable';
 import {handleActions} from 'redux-actions';
-import {AnnotatorState} from '../../constants/models';
+import {LabelerState} from '../../constants/models';
 import {
    DEFAULT,
    PRE_ANNOTATION,
@@ -238,6 +238,6 @@ const annotatorReducers = handleActions({
       return pushToAnnotations(state);
     },
   },
-  AnnotatorState
+  LabelerState
 );
 export default annotatorReducers;

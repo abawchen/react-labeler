@@ -1,6 +1,6 @@
 import Immutable from 'immutable';
 
-export const AnnotatorState = Immutable.fromJS({
+export const LabelerState = Immutable.fromJS({
   // TODO: Remove seeding value
   src: 'https://goo.gl/9nhdu1',
   imageWidth: 0,
