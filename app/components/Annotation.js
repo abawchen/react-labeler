@@ -73,7 +73,7 @@ const Annotation = ({
     <foreignObject
       x={getLabelPosition(annotation.points, 0)}
       y={getLabelPosition(annotation.points, 1)}
-      width='100'
+      width='100%'
       height='20'
       style={{
         visibility: hover ? 'visible' : 'hidden'
@@ -88,6 +88,7 @@ const Annotation = ({
         id={'input-' + aix}
         data-aix={aix}
         value={annotation.label}
+        style={{ width: `${annotation.label.length * 7 < 50 ? 50 : annotation.label.length * 7 > 100 ? 100 : annotation.label.length * 7}px` }}
         onChange={onLabelChange}
         onKeyDown={(e) => keyDownHandler(e, onDeleteAnnotation, aix)}
       />
