@@ -1,15 +1,15 @@
-// 這邊使用 HtmlWebpackPlugin，將 bundle 好的 <script> 插入到 body。${__dirname} 為 ES6 語法對應到 __dirname  
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const basePath = path.join(__dirname, '..');
 const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: `${__dirname}/src/index.html`,
+  template: path.join(basePath, '/src/index.html'),
   filename: 'index.html',
   inject: 'body',
 });
 
 module.exports = {
   entry: [
-    './src/index.js',
+    path.join(basePath, '/src/index.js'),
   ],
   output: {
     path: `${__dirname}/dist`,
