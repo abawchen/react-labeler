@@ -4,14 +4,14 @@
   font-size: small;
 }
 
-.annotatorContainer {
+.labelerContainer {
   clear: both;
   position: relative;
   width: 100%;
   height: auto;
 }
 
-.annotatorContainer img {
+.labelerContainer img {
   max-width: 100%;
   max-height: 100%;
 }

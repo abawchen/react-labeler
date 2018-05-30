@@ -24,7 +24,7 @@ import {
 } from '../actions';
 
 const mapStateToProps = (state) => {
-  return state.get('annotator').toJS();
+  return state.get('labeler').toJS();
 }
 
 const mapDispatchToProps = (dispatch) => {

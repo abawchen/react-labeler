@@ -1,1 +1,1 @@
-export * from './annotatorActions';
+export * from './labelerActions';
