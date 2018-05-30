@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const basePath = path.join(__dirname, '..');
 const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -30,10 +30,6 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       }
     ],
-  },
-  devServer: {
-    inline: true,
-    port: 8008,
   },
   plugins: [HTMLWebpackPluginConfig],
 };
