@@ -24,10 +24,13 @@
 
 .labelInput {
   font-size: 12px;
-  padding: 2px;
-  width: 100%;
-  border: 1px solid rgba(71,80,92,0.8);
-  border-radius: 3px;
+  padding: 2px 4px;
+  /*
+  max-width: 100px;
+  min-width: 50px;
+  */
+  border: 2px solid rgba(71,80,92,0.8);
+  border-radius: 5px;
   text-align: center;
 }
 
