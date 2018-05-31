@@ -1,20 +1,15 @@
 // https://webpack.js.org/guides/production/
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const basePath = path.join(__dirname, '..');
-const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: path.join(basePath, '/src/index.html'),
-  filename: 'index.html',
-  inject: 'body',
-});
 
 module.exports = {
   entry: [
     path.join(basePath, '/src/index.js'),
+    path.join(basePath, '/src/css.js'),
   ],
   output: {
-    path: `${__dirname}/dist`,
-    filename: 'bundle.js',
+    path: path.resolve(basePath, 'dist'),
+    filename: '[name].bundle.js',
   },
   module: {
     rules: [
@@ -32,6 +27,5 @@ module.exports = {
       }
     ],
   },
-  plugins: [HTMLWebpackPluginConfig],
 };
 

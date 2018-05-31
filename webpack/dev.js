@@ -1,13 +1,19 @@
 const merge = require('webpack-merge');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const common = require('./common');
 const basePath = path.join(__dirname, '..');
+const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
+  template: path.join(basePath, '/src/index.html'),
+  filename: 'index.html',
+  inject: 'body',
+});
 
 module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: path.join(basePath, '/build'),
+    contentBase: path.join(basePath, '/dist'),
     inline: true,
     noInfo: false,
     host: '0.0.0.0',
@@ -24,5 +30,6 @@ module.exports = merge(common, {
       children: false
     },
     historyApiFallback: true
-  }
+  },
+  plugins: [HTMLWebpackPluginConfig],
 });
