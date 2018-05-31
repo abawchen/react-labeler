@@ -5,7 +5,6 @@ const basePath = path.join(__dirname, '..');
 module.exports = {
   entry: [
     path.join(basePath, '/src/index.js'),
-    path.join(basePath, '/src/css.js'),
   ],
   output: {
     path: path.resolve(basePath, 'dist'),
