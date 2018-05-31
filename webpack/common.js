@@ -1,3 +1,4 @@
+// https://webpack.js.org/guides/production/
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const basePath = path.join(__dirname, '..');
