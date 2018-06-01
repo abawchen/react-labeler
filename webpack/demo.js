@@ -1,5 +1,5 @@
 const merge = require('webpack-merge');
-const path = require('path');
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const common = require('./common');
 const basePath = path.join(__dirname, '..');
@@ -10,29 +10,13 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 
 module.exports = merge(common, {
-  mode: 'development',
+  mode: 'production',
   entry: {
     app: path.join(basePath, '/src/dev.js'),
   },
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: path.join(basePath, '/dist'),
-    inline: true,
-    noInfo: false,
-    host: '0.0.0.0',
-    port: 8008,
-    stats: {
-      historyApiFallback: true,
-      assets: false,
-      colors: true,
-      version: false,
-      hash: false,
-      timings: true,
-      chunks: true,
-      chunkModules: false,
-      children: false
-    },
-    historyApiFallback: true
+  output: {
+    path: path.resolve(basePath, 'demo'),
+    filename: '[name].bundle.js'
   },
   plugins: [HTMLWebpackPluginConfig],
 });
