@@ -3,9 +3,9 @@ const path = require('path');
 const basePath = path.join(__dirname, '..');
 
 module.exports = {
-  entry: [
-    path.join(basePath, '/src/index.js'),
-  ],
+  entry: {
+    app: path.join(basePath, '/src/index.js')
+  },
   output: {
     path: path.resolve(basePath, 'dist'),
     filename: '[name].bundle.js',
@@ -17,7 +17,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2016', 'react', "stage-0"],
+          presets: ['es2016', 'react', 'stage-0'],
         },
       },
       {
@@ -25,6 +25,6 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       }
     ],
-  },
+  }
 };
 

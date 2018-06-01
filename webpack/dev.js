@@ -11,9 +11,13 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 
 module.exports = merge(common, {
   mode: 'development',
-  entry: [
-    path.join(basePath, '/src/index.dev.js'),
-  ],
+  entry: {
+    app: path.join(basePath, '/src/dev.js'),
+  },
+  output: {
+    path: path.resolve(basePath, 'dev'),
+    filename: '[name].bundle.js'
+  },
   devtool: 'inline-source-map',
   devServer: {
     contentBase: path.join(basePath, '/dist'),
