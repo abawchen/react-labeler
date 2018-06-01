@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux-immutable';
 import {reducer as toastrReducer} from 'react-redux-toastr'
-import annotator from './data/annotationReducers';
+import labeler from './data/labelerReducers';
 
 const rootReducer = combineReducers({
-  annotator,
+  labeler,
   toastr: toastrReducer
 });
 

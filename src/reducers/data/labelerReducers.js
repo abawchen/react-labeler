@@ -12,6 +12,7 @@ import {
 const defaultPreAnnotation = Immutable.fromJS({
   id: '',
   shape: '',
+  label: '',
   points: []
 });
 
@@ -25,7 +26,7 @@ const pushToAnnotations = (state) => {
       .set('hix', state.get('annotations').size);
 }
 
-const annotatorReducers = handleActions({
+const labelerReducers = handleActions({
     ON_IMAGE_LOAD: (state, { payload }) => {
       let e = payload.event;
       return state
@@ -240,4 +241,4 @@ const annotatorReducers = handleActions({
   },
   LabelerState
 );
-export default annotatorReducers;
+export default labelerReducers;

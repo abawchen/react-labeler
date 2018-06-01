@@ -36,7 +36,7 @@ const Labeler = ({
   onPrePointMouseLeave,
   onPrePointClick,
 }) => (
-  <div className='annotatorContainer'>
+  <div className='labelerContainer'>
     <img
       src={src}
       onLoad={onImageLoad}

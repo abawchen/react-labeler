@@ -1,3 +1,5 @@
 *.swo
 *.swp
+demo
+dist
 node_modules
