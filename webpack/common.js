@@ -4,7 +4,8 @@ const basePath = path.join(__dirname, '..');
 
 module.exports = {
   entry: {
-    app: path.join(basePath, '/src/index.js')
+    app: path.join(basePath, '/src/index.js'),
+    css: path.join(basePath, '/src/css.js'),
   },
   output: {
     path: path.resolve(basePath, 'dist'),
@@ -27,4 +28,3 @@ module.exports = {
     ],
   }
 };
-
