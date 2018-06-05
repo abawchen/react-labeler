@@ -4,6 +4,12 @@ import ReduxToastr from 'react-redux-toastr'
 import store from './store';
 import Main from './components/Main';
 
+window.addEventListener('resize', () => {
+  console.log('resize');
+  let img = document.getElementById("img");
+  console.log(img.width);
+});
+
 class ReactLabeler extends React.Component {
   render() {
     return (

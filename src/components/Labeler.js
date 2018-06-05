@@ -37,6 +37,7 @@ const Labeler = ({
 }) => (
   <div className='labelerContainer'>
     <img
+      id='img'
       src={image.src}
       onLoad={onImageLoad}
     />

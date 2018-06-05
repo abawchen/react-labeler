@@ -27,6 +27,9 @@ const pushToAnnotations = (state) => {
 }
 
 const labelerReducers = handleActions({
+    ON_SCREEN_RESIZE: (state, { payload }) => {
+      return state;
+    },
     ON_IMAGE_LOAD: (state, { payload }) => {
       let e = payload.event;
       console.log(e.target.naturalWidth);
