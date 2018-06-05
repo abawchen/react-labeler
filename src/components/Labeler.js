@@ -5,8 +5,7 @@ import PrePolygon from './PrePolygon';
 import PreRectangle from './PreRectangle';
 
 const Labeler = ({
-  imageWidth,
-  imageHeight,
+  image,
   hix,
   aix,
   pix,
@@ -38,14 +37,14 @@ const Labeler = ({
 }) => (
   <div className='labelerContainer'>
     <img
-      src={src}
+      src={image.src}
       onLoad={onImageLoad}
     />
     <svg
       className='ori'
       tabIndex='0'
-      width={imageWidth}
-      height={imageHeight}
+      width={image.width}
+      height={image.hight}
       onMouseMove={mode.startsWith('MOVE') ? onMouseMove : null}
       onKeyDown={hix === -1 ? onKeyDown : null}
     >
@@ -53,8 +52,7 @@ const Labeler = ({
         mode === 'PRE_ANNOTATION'
           ? annotationShape === 'polygon'
             ? <PrePolygon
-                imageWidth={imageWidth}
-                imageHeight={imageHeight}
+                image={image}
                 aix={-1}
                 pix={pix}
                 preAnnotation={preAnnotation}
@@ -64,8 +62,7 @@ const Labeler = ({
                 onPrePointClick={onPrePointClick}
               />
             : <PreRectangle
-                imageWidth={imageWidth}
-                imageHeight={imageHeight}
+                image={image}
                 aix={-1}
                 pix={pix}
                 preAnnotation={preAnnotation}
@@ -78,8 +75,7 @@ const Labeler = ({
       {
         annotations.map((annotation, index) => (
           <Annotation
-            imageWidth={imageWidth}
-            imageHeight={imageHeight}
+            image={image}
             key={index}
             hix={hix}
             aix={index}

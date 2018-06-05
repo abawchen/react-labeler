@@ -3,8 +3,13 @@ import Immutable from 'immutable';
 export const LabelerState = Immutable.fromJS({
   // TODO: Remove seeding value
   // src: 'https://goo.gl/9nhdu1',
-  src: 'https://static.dezeen.com/uploads/2017/08/clifton-house-project-architecture_dezeen_hero-1.jpg', imageWidth: 0,
-  imageHeight: 0,
+  image: {
+     src: 'https://static.dezeen.com/uploads/2017/08/clifton-house-project-architecture_dezeen_hero-1.jpg',
+    originalWidth: 0,
+    originalHeight: 0,
+    width: 0,
+    height: 0,
+  },
   coords: {},
   mode: 'DEFAULT',
   hix: -1,

@@ -8,8 +8,7 @@ import {
 
 
 const Annotation = ({
-  imageWidth,
-  imageHeight,
+  image,
   hix,
   aix,
   pix,
@@ -38,7 +37,7 @@ const Annotation = ({
       style={{
         visibility: hover ? 'visible' : 'hidden'
       }}
-      d={getPathD(imageWidth, imageHeight, annotation.points, true)}
+      d={getPathD(image.width, image.height, annotation.points, true)}
       fill='gray'
       fill-rule='evenodd'
       opacity='0.5'

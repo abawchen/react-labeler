@@ -29,9 +29,10 @@ const pushToAnnotations = (state) => {
 const labelerReducers = handleActions({
     ON_IMAGE_LOAD: (state, { payload }) => {
       let e = payload.event;
+      console.log(e.target.naturalWidth);
       return state
-        .set('imageWidth', e.target.width)
-        .set('imageHeight', e.target.height);
+        .setIn(['image', 'width'], e.target.width)
+        .setIn(['image', 'height'], e.target.height);
     },
     SHORTCUT: (state, { payload }) => {
       let e = payload.event;
