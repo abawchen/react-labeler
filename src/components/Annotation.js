@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {
   getLabelPosition,
+  getDisplayX,
+  getDisplayY,
+  getDisplayPoints,
   getPathD,
   keyDownHandler,
 } from '../utils/annotation';
@@ -44,7 +47,7 @@ const Annotation = ({
     />
     <polygon
       data-aix={aix}
-      points={annotation.points}
+      points={getDisplayPoints(image, annotation.points)}
       onMouseDown={onPolygonMouseDown}
       onMouseUp={onPolygonMouseUp}
       onMouseEnter={onPolygonMouseEnter}
@@ -60,8 +63,8 @@ const Annotation = ({
           key={index}
           data-aix={aix}
           data-pix={index}
-          cx={point[0]}
-          cy={point[1]}
+          cx={getDisplayX(image, point[0])}
+          cy={getDisplayY(image, point[1])}
           onMouseDown={onPointMouseDown}
           onMouseUp={onPointMouseUp}
           onMouseEnter={onPointMouseEnter}
@@ -70,8 +73,8 @@ const Annotation = ({
       )
     }
     <foreignObject
-      x={getLabelPosition(annotation.points, 0)}
-      y={getLabelPosition(annotation.points, 1)}
+      x={getLabelPosition(image, annotation.points, 0)}
+      y={getLabelPosition(image, annotation.points, 1)}
       width='100%'
       height='20'
       style={{
