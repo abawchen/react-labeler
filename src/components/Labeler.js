@@ -45,7 +45,7 @@ const Labeler = ({
       className='ori'
       tabIndex='0'
       width={image.width}
-      height={image.hight}
+      height={image.height}
       onMouseMove={mode.startsWith('MOVE') ? onMouseMove : null}
       onKeyDown={hix === -1 ? onKeyDown : null}
     >

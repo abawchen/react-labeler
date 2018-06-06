@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(move({ event }));
     },
     onDeleteAnnotation: (aix) => {
-      dispatch(deleteAnnotation(aix)); 
+      dispatch(deleteAnnotation(aix));
     },
     onPointMouseDown: (event) => {
       dispatch(selectPoint({ event }));

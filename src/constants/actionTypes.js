@@ -1,3 +1,4 @@
+export const ON_SCREEN_RESIZE = 'ON_SCREEN_RESIZE';
 export const ON_IMAGE_LOAD = 'ON_IMAGE_LOAD';
 export const SHORTCUT = 'SHORTCUT';
 export const CHANGE_LABEL_TEXT = 'CHANGE_LABEL_TEXT';
