@@ -51,8 +51,8 @@ export const LabelerState = Immutable.fromJS({
     },
     {
        id: '3',
-       label: 'third',
-       shape: 'sofa',
+       label: 'sofa',
+       shape: 'rectangle',
        points: [
         [296, 214],
         [296, 261],

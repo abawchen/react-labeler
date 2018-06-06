@@ -65,12 +65,16 @@ const labelerReducers = handleActions({
     },
     ADD_POINT: (state, { payload }) => {
       let e = payload.event;
+      // https://stackoverflow.com/a/42111623/9041712
+      var rect = e.target.getBoundingClientRect();
+      let x = e.clientX - rect.left;
+      let y = e.clientY - rect.top;
       if (state.get('annotationShape') === 'polygon') {
         let preAnnotation = state
           .get('preAnnotation', defaultPreAnnotation)
           .set('shape', 'polygon')
           .update('points', list => list.push(
-            Immutable.fromJS([e.pageX, e.pageY])));
+            Immutable.fromJS([x, y])));
         return state
           .set('preAnnotation', preAnnotation);
       }

@@ -29,7 +29,7 @@ export default class PrePolygon extends React.Component {
 
   render () {
     return (
-      <g>
+      <g className='ori'>
         <rect
           className='overlay'
           width={this.props.image.width}

@@ -30,7 +30,6 @@ export default class PreRectangle extends React.Component {
     return (
       <g>
         <path
-          className='ori'
           fill='gray'
           fill-rule='evenodd'
           opacity='0.5'
