@@ -28,7 +28,10 @@ const pushToAnnotations = (state) => {
 
 const labelerReducers = handleActions({
     ON_SCREEN_RESIZE: (state, { payload }) => {
-      return state;
+      let image = payload.image;
+      return state
+        .setIn(['image', 'width'], image.width)
+        .setIn(['image', 'height'], image.height);
     },
     ON_IMAGE_LOAD: (state, { payload }) => {
       let e = payload.event;
