@@ -27,11 +27,20 @@ const pushToAnnotations = (state) => {
 }
 
 const labelerReducers = handleActions({
+    ON_SCREEN_RESIZE: (state, { payload }) => {
+      let image = payload.image;
+      return state
+        .setIn(['image', 'width'], image.width)
+        .setIn(['image', 'height'], image.height);
+    },
     ON_IMAGE_LOAD: (state, { payload }) => {
       let e = payload.event;
+      console.log(e.target.naturalWidth);
       return state
-        .set('imageWidth', e.target.width)
-        .set('imageHeight', e.target.height);
+        .setIn(['image', 'width'], e.target.width)
+        .setIn(['image', 'height'], e.target.height)
+        .setIn(['image', 'initWidth'], e.target.width)
+        .setIn(['image', 'initHeight'], e.target.height);
     },
     SHORTCUT: (state, { payload }) => {
       let e = payload.event;
@@ -58,12 +67,16 @@ const labelerReducers = handleActions({
     },
     ADD_POINT: (state, { payload }) => {
       let e = payload.event;
+      // https://stackoverflow.com/a/42111623/9041712
+      var rect = e.target.getBoundingClientRect();
+      let x = e.clientX - rect.left;
+      let y = e.clientY - rect.top;
       if (state.get('annotationShape') === 'polygon') {
         let preAnnotation = state
           .get('preAnnotation', defaultPreAnnotation)
           .set('shape', 'polygon')
           .update('points', list => list.push(
-            Immutable.fromJS([e.pageX, e.pageY])));
+            Immutable.fromJS([x, y])));
         return state
           .set('preAnnotation', preAnnotation);
       }
@@ -79,8 +92,8 @@ const labelerReducers = handleActions({
       let e = payload.event;
       let aix = parseInt(state.get('aix'));
       let pix = parseInt(state.get('pix'));
-      let xDiff = state.getIn(['coords', 'x']) - e.pageX;
-      let yDiff = state.getIn(['coords', 'y']) - e.pageY;
+      let xDiff = state.getIn(['coords', 'x']) - e.clientX;
+      let yDiff = state.getIn(['coords', 'y']) - e.clientY;
       if (mode === MOVE_SHAPE) {
         let points = state
           .getIn(['annotations', aix, 'points'])

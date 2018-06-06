@@ -4,6 +4,7 @@ import ReduxToastr from 'react-redux-toastr'
 import store from './store';
 import Main from './components/Main';
 
+
 class ReactLabeler extends React.Component {
   render() {
     return (

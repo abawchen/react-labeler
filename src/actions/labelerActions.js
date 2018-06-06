@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import {
+  ON_SCREEN_RESIZE,
   ON_IMAGE_LOAD,
   SHORTCUT,
   CHANGE_LABEL_TEXT,
@@ -22,6 +23,7 @@ import {
   CLICK_PRE_POINT,
 } from '../constants/actionTypes';
 
+export const onScreenResize = createAction(ON_SCREEN_RESIZE);
 export const onImageLoad = createAction(ON_IMAGE_LOAD);
 export const shortcut = createAction(SHORTCUT);
 export const changeLabelText = createAction(CHANGE_LABEL_TEXT);

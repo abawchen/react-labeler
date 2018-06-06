@@ -5,8 +5,7 @@ import {getPathD} from '../utils/annotation';
 
 export default class PreRectangle extends React.Component {
   static propTypes = {
-    imageWidth: PropTypes.number.isRequired,
-    imageHeight: PropTypes.number.isRequired,
+    image: PropTypes.object.isRequired,
     aix: PropTypes.number.isRequired,
     pix: PropTypes.number.isRequired,
     preAnnotation: PropTypes.object.isRequired,
@@ -31,21 +30,19 @@ export default class PreRectangle extends React.Component {
     return (
       <g>
         <path
-          className='ori'
           fill='gray'
           fill-rule='evenodd'
           opacity='0.5'
           d={getPathD(
-            this.props.imageWidth,
-            this.props.imageHeight,
+            props.image,
             this.props.preAnnotation.points,
             true
           )}
         />
         <rect
           opacity={0}
-          width={this.props.imageWidth}
-          height={this.props.imageHeight}
+          width={this.props.image.width}
+          height={this.props.image.height}
           onMouseDown={this.props.onPreAnnotationMouseDown}
           onMouseMove={!!this.props.preAnnotation.points.length ? this.props.onPreAnnotationMouseMove : null}
         />

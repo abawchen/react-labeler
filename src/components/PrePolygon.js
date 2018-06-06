@@ -4,8 +4,7 @@ import {toastr} from 'react-redux-toastr';
 
 export default class PrePolygon extends React.Component {
   static propTypes = {
-    imageWidth: PropTypes.number.isRequired,
-    imageHeight: PropTypes.number.isRequired,
+    image: PropTypes.object.isRequired,
     pix: PropTypes.number.isRequired,
     aix: PropTypes.number.isRequired,
     preAnnotation: PropTypes.object.isRequired,
@@ -30,11 +29,11 @@ export default class PrePolygon extends React.Component {
 
   render () {
     return (
-      <g>
+      <g className='ori'>
         <rect
           className='overlay'
-          width={this.props.imageWidth}
-          height={this.props.imageHeight}
+          width={this.props.image.width}
+          height={this.props.image.height}
           onClick={this.props.onAddPoint}
         />
         {
