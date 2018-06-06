@@ -38,7 +38,9 @@ const labelerReducers = handleActions({
       console.log(e.target.naturalWidth);
       return state
         .setIn(['image', 'width'], e.target.width)
-        .setIn(['image', 'height'], e.target.height);
+        .setIn(['image', 'height'], e.target.height)
+        .setIn(['image', 'initWidth'], e.target.width)
+        .setIn(['image', 'initHeight'], e.target.height);
     },
     SHORTCUT: (state, { payload }) => {
       let e = payload.event;
@@ -90,8 +92,8 @@ const labelerReducers = handleActions({
       let e = payload.event;
       let aix = parseInt(state.get('aix'));
       let pix = parseInt(state.get('pix'));
-      let xDiff = state.getIn(['coords', 'x']) - e.pageX;
-      let yDiff = state.getIn(['coords', 'y']) - e.pageY;
+      let xDiff = state.getIn(['coords', 'x']) - e.clientX;
+      let yDiff = state.getIn(['coords', 'y']) - e.clientY;
       if (mode === MOVE_SHAPE) {
         let points = state
           .getIn(['annotations', aix, 'points'])

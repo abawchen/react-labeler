@@ -9,9 +9,20 @@ export const getLabelPosition = (points, axis) => {
       : Math.min(acc, cur), axis === 0 ? 0 : Infinity);
 }
 
-export const getPathD = (
-  imageWidth, imageHeight, points, isClosed) => {
-  let d = `M0,0 L${imageWidth},0 L${imageWidth},${imageHeight} L0,${imageHeight} z`;
+export const getDisplayValue = (val, a, b) => {
+  return val * a / b;
+}
+
+export const getDisplayX = (x, image) => {
+  return getDisplayValue(x, image.width, image.initWidth);
+}
+
+export const getDisplayY = (y, image) => {
+  return getDisplayValue(y, image.height, image.initHeight);
+}
+
+export const getPathD = (image, points, isClosed) => {
+  let d = `M0,0 L${image.width},0 L${image.width},${image.height} L0,${image.height} z`;
   d += points
     .reduce((acc, point, index) => {
       return `${acc} ${index === 0 ? 'M' : 'L'}${point[0]},${point[1]}`

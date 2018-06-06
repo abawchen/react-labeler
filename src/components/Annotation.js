@@ -37,7 +37,7 @@ const Annotation = ({
       style={{
         visibility: hover ? 'visible' : 'hidden'
       }}
-      d={getPathD(image.width, image.height, annotation.points, true)}
+      d={getPathD(image, annotation.points, true)}
       fill='gray'
       fill-rule='evenodd'
       opacity='0.5'

@@ -8,8 +8,8 @@ export const LabelerState = Immutable.fromJS({
     originalHeight: 0,
     width: 0,
     height: 0,
-    widthRatio: 0.0,
-    heightRatio: 0.0,
+    initWidth: 0,
+    initHeight: 0,
   },
   coords: {},
   mode: 'DEFAULT',
@@ -50,15 +50,26 @@ export const LabelerState = Immutable.fromJS({
       ]
     },
     {
-       id: '3',
-       label: 'sofa',
-       shape: 'rectangle',
-       points: [
+      id: '3',
+      label: 'sofa',
+      shape: 'rectangle',
+      points: [
         [296, 214],
         [296, 261],
         [383, 261],
         [383, 214],
-       ]
+      ]
+    },
+    {
+      id: '4',
+      label: 'window',
+      shape: 'polygon',
+      points: [
+        [278, 95],
+        [260, 143],
+        [373, 119],
+        [370, 62]
+      ]
     }
   ],
 });

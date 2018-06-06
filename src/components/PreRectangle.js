@@ -34,8 +34,7 @@ export default class PreRectangle extends React.Component {
           fill-rule='evenodd'
           opacity='0.5'
           d={getPathD(
-            this.props.image.width,
-            this.props.image.height,
+            props.image,
             this.props.preAnnotation.points,
             true
           )}
