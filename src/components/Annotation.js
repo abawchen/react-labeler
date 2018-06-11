@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 import {
   getLabelPosition,
   getDisplayX,
@@ -9,6 +10,11 @@ import {
   keyDownHandler,
 } from '../utils/annotation';
 
+const Path = styled.path`
+  fill: gray;
+  fill-rule: evenodd;
+  opacity: 0.5;
+`;
 
 const Annotation = ({
   image,
@@ -29,19 +35,12 @@ const Annotation = ({
 }) => (
   <g
     className='ori'
-    style={{
-      display: (hix === -1 || hover) && mode !== 'PRE_ANNOTATION' ? 'block' : 'none'
-    }}
+    display={(hix === -1 || hover) && mode !== 'PRE_ANNOTATION' ? 'block' : 'none'}
   >
-    <path
+    <Path
       className='ori'
-      style={{
-        visibility: hover ? 'visible' : 'hidden'
-      }}
+      visibility={hover ? 'visible' : 'hidden'}
       d={getPathD(image, annotation.points, true)}
-      fill='gray'
-      fill-rule='evenodd'
-      opacity='0.5'
     />
     <polygon
       data-aix={aix}
@@ -53,9 +52,7 @@ const Annotation = ({
     {
       annotation.points.map((point, index) =>
         <circle
-          style={{
-            cursor: hover ? 'move' : 'default'
-          }}
+          cursor={hover ? 'move' : 'default'}
           r={5}
           key={index}
           data-aix={aix}
@@ -72,10 +69,8 @@ const Annotation = ({
       x={getLabelPosition(image, annotation.points, 0)}
       y={getLabelPosition(image, annotation.points, 1)}
       width='100%'
-      height='20'
-      style={{
-        visibility: hover ? 'visible' : 'hidden'
-      }}
+      height='20px'
+      visibility={hover ? 'visible' : 'hidden'}
     >
       <input
         type='text'
