@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {toastr} from 'react-redux-toastr';
+import {G} from '../styles';
 
 export default class PrePolygon extends React.Component {
   static propTypes = {
@@ -29,7 +30,7 @@ export default class PrePolygon extends React.Component {
 
   render () {
     return (
-      <g className='ori'>
+      <G>
         <rect
           className='overlay'
           width={this.props.image.width}
@@ -72,7 +73,7 @@ export default class PrePolygon extends React.Component {
             />
           )
         }
-      </g>
+      </G>
     );
   }
 }

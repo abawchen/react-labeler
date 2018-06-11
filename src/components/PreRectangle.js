@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {toastr} from 'react-redux-toastr';
+import {Path} from '../styles';
 import {getPathD} from '../utils/annotation';
 
 export default class PreRectangle extends React.Component {
@@ -29,12 +30,9 @@ export default class PreRectangle extends React.Component {
   render() {
     return (
       <g>
-        <path
-          fill='gray'
-          fill-rule='evenodd'
-          opacity='0.5'
+        <Path
           d={getPathD(
-            props.image,
+            this.props.image,
             this.props.preAnnotation.points,
             true
           )}

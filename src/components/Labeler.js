@@ -3,6 +3,26 @@ import ReactDOM from 'react-dom';
 import Annotation from './Annotation';
 import PrePolygon from './PrePolygon';
 import PreRectangle from './PreRectangle';
+import styled from 'styled-components';
+
+const LabelerContainer = styled.div`
+  clear: both;
+  position: relative;
+  width: 100%;
+  height: 400px;
+`;
+
+const Image = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+`;
+
+
+const Svg = styled.svg`
+  position: absolute;
+  left: 0;
+  right: 0
+`;
 
 const Labeler = ({
   image,
@@ -33,14 +53,13 @@ const Labeler = ({
   onPrePointMouseLeave,
   onPrePointClick,
 }) => (
-  <div className='labelerContainer'>
-    <img
+  <LabelerContainer>
+    <Image
       id='img'
       src={image.src}
       onLoad={onImageLoad}
     />
-    <svg
-      className='ori'
+    <Svg
       tabIndex='0'
       width={image.width}
       height={image.height}
@@ -92,8 +111,8 @@ const Labeler = ({
           />
         ))
       }
-    </svg>
-  </div>
+    </Svg>
+  </LabelerContainer>
 )
 
 export default Labeler;

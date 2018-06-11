@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+import {G, Path} from '../styles';
 import {
   getLabelPosition,
   getDisplayX,
@@ -10,10 +11,16 @@ import {
   keyDownHandler,
 } from '../utils/annotation';
 
-const Path = styled.path`
-  fill: gray;
-  fill-rule: evenodd;
-  opacity: 0.5;
+
+const LabelInput = styled.input.attrs({
+  type: 'text',
+  placeholder: 'label me',
+})`
+  font-size: 12px;
+  padding: 2px 4px;
+  border: 2px solid rgba(71,80,92,0.8);
+  border-radius: 5px;
+  text-align: center;
 `;
 
 const Annotation = ({
@@ -33,12 +40,10 @@ const Annotation = ({
   onShapeMouseEnter,
   onShapeMouseLeave,
 }) => (
-  <g
-    className='ori'
+  <G
     display={(hix === -1 || hover) && mode !== 'PRE_ANNOTATION' ? 'block' : 'none'}
   >
     <Path
-      className='ori'
       visibility={hover ? 'visible' : 'hidden'}
       d={getPathD(image, annotation.points, true)}
     />
@@ -72,12 +77,8 @@ const Annotation = ({
       height='20px'
       visibility={hover ? 'visible' : 'hidden'}
     >
-      <input
-        type='text'
-        className='labelInput'
-        placeholder='label me'
-        // https://stackoverflow.com/a/36925998/9041712
-        ref={(input) => input != null && input.focus()}
+      <LabelInput
+        innerRef={(input) => input != null && input.focus()}
         id={'input-' + aix}
         data-aix={aix}
         value={annotation.label}
@@ -86,7 +87,7 @@ const Annotation = ({
         onKeyDown={(e) => keyDownHandler(e, onDeleteAnnotation, aix)}
       />
     </foreignObject>
-  </g>
+  </G>
 )
 
 export default Annotation;

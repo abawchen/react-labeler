@@ -4,36 +4,6 @@
   font-size: small;
 }
 
-.labelerContainer {
-  clear: both;
-  position: relative;
-  width: 100%;
-  height: 400px;
-}
-
-.labelerContainer img {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.ori {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.labelInput {
-  font-size: 12px;
-  padding: 2px 4px;
-  /*
-  max-width: 100px;
-  min-width: 50px;
-  */
-  border: 2px solid rgba(71,80,92,0.8);
-  border-radius: 5px;
-  text-align: center;
-}
-
 foreignObject {
   overflow: auto;
 }
@@ -43,20 +13,12 @@ circle, line {
   stroke: black;
 }
 
-/*
-circle:hover {
-  fill: red;
-  cursor: move;
-}
-*/
-
 polygon {
   fill: rgba(124,240,10,0);
   stroke: purple;
 }
 
 polygon:hover {
-  /* fill: rgba(124,240,10,0.8); */
   cursor: move;
 }
 
