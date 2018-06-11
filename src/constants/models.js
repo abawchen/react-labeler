@@ -12,6 +12,7 @@ export const LabelerState = Immutable.fromJS({
     initHeight: 0,
   },
   coords: {},
+  opacity: 0.8,
   mode: 'DEFAULT',
   hix: -1,
   aix: -1,

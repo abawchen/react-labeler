@@ -20,14 +20,12 @@ const Labeler = ({
   onAddPoint,
   onMouseMove,
   onKeyDown,
-  onPointMouseDown,
-  onPointMouseUp,
+  onPointClick,
   onPointMouseEnter,
   onPointMouseLeave,
-  onPolygonMouseDown,
-  onPolygonMouseUp,
-  onPolygonMouseEnter,
-  onPolygonMouseLeave,
+  onShapeClick,
+  onShapeMouseEnter,
+  onShapeMouseLeave,
   onPreAnnotationMouseDown,
   onPreAnnotationMouseUp,
   onPreAnnotationMouseMove,
@@ -85,14 +83,12 @@ const Labeler = ({
             annotation={annotation}
             onDeleteAnnotation={onDeleteAnnotation}
             onLabelChange={onLabelChange}
-            onPointMouseDown={onPointMouseDown}
-            onPointMouseUp={onPointMouseUp}
+            onPointClick={onPointClick}
             onPointMouseEnter={onPointMouseEnter}
             onPointMouseLeave={onPointMouseLeave}
-            onPolygonMouseDown={onPolygonMouseDown}
-            onPolygonMouseUp={onPolygonMouseUp}
-            onPolygonMouseEnter={onPolygonMouseEnter}
-            onPolygonMouseLeave={onPolygonMouseLeave}
+            onShapeClick={onShapeClick}
+            onShapeMouseEnter={onShapeMouseEnter}
+            onShapeMouseLeave={onShapeMouseLeave}
           />
         ))
       }

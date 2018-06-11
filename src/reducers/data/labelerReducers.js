@@ -35,7 +35,6 @@ const labelerReducers = handleActions({
     },
     ON_IMAGE_LOAD: (state, { payload }) => {
       let e = payload.event;
-      console.log(e.target.naturalWidth);
       return state
         .setIn(['image', 'width'], e.target.width)
         .setIn(['image', 'height'], e.target.height)
@@ -143,20 +142,21 @@ const labelerReducers = handleActions({
     DELETE_ANNOTATION: (state, { payload }) => {
       return state.removeIn(['annotations', payload]);
     },
-    SELECT_POINT: (state, { payload }) => {
+    CLICK_POINT: (state, { payload }) => {
       let e = payload.event;
-      return state
-        .set('mode', MOVE_POINT)
-        .setIn(['coords', 'x'], e.pageX)
-        .setIn(['coords', 'y'], e.pageY)
-        .set('aix', parseInt(e.currentTarget.dataset.aix))
-        .set('pix', parseInt(e.currentTarget.dataset.pix));
-    },
-    DESELECT_POINT: (state, { payload }) => {
-      return state
-        .set('mode', DEFAULT)
-        .set('aix', -1)
-        .set('pix', -1);
+      if (state.get('mode') === DEFAULT) {
+        return state
+          .set('mode', MOVE_POINT)
+          .setIn(['coords', 'x'], e.pageX)
+          .setIn(['coords', 'y'], e.pageY)
+          .set('aix', parseInt(e.currentTarget.dataset.aix))
+          .set('pix', parseInt(e.currentTarget.dataset.pix));
+      } else {
+        return state
+          .set('mode', DEFAULT)
+          .set('aix', -1)
+          .set('pix', -1);
+      }
     },
     ENTER_POINT: (state, { payload }) => {
       return state
@@ -167,20 +167,21 @@ const labelerReducers = handleActions({
         ? state.set('hix', -1)
         : state;
     },
-    SELECT_SHAPE: (state, { payload }) => {
+    CLICK_SHAPE: (state, { payload }) => {
       let e = payload.event;
-      return state
-        .set('mode', MOVE_SHAPE)
-        .setIn(['coords', 'x'], e.pageX)
-        .setIn(['coords', 'y'], e.pageY)
-        .set('aix', parseInt(e.currentTarget.dataset.aix))
-        .set('pix', -1);
-    },
-    DESELECT_SHAPE: (state, { payload }) => {
-      return state
-        .set('mode', DEFAULT)
-        .set('aix', -1)
-        .set('pix', -1);
+      if (state.get('mode') === DEFAULT) {
+        return state
+          .set('mode', MOVE_SHAPE)
+          .setIn(['coords', 'x'], e.pageX)
+          .setIn(['coords', 'y'], e.pageY)
+          .set('aix', parseInt(e.currentTarget.dataset.aix))
+          .set('pix', -1);
+      } else {
+        return state
+          .set('mode', DEFAULT)
+          .set('aix', -1)
+          .set('pix', -1);
+      }
     },
     ENTER_SHAPE: (state, { payload }) => {
        return state
