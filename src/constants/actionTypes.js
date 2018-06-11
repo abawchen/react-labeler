@@ -5,13 +5,11 @@ export const CHANGE_LABEL_TEXT = 'CHANGE_LABEL_TEXT';
 export const MOVE = 'MOVE';
 export const DELETE_ANNOTATION = 'DELETE_ANNOTATION';
 
-export const SELECT_POINT = 'SELECT_POINT';
-export const DESELECT_POINT = 'DESELECT_POINT';
+export const CLICK_POINT = 'CLICK_POINT';
 export const ENTER_POINT = 'ENTER_POINT';
 export const LEAVE_POINT = 'LEAVE_POINT';
 
-export const SELECT_SHAPE = 'SELECT_SHAPE';
-export const DESELECT_SHAPE = 'DESELECT_SHAPE';
+export const CLICK_SHAPE = 'CLICK_SHAPE';
 export const ENTER_SHAPE = 'ENTER_SHAPE';
 export const LEAVE_SHAPE = 'LEAVE_SHAPE';
 

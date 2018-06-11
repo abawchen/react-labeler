@@ -7,14 +7,12 @@ import {
   move,
   deleteAnnotation,
   addPoint,
-  selectPoint,
-  deselectPoint,
+  clickPoint,
   enterPoint,
   leavePoint,
-  selectPolygon,
-  deselectPolygon,
-  enterPolygon,
-  leavePolygon,
+  clickShape,
+  enterShape,
+  leaveShape,
   beginToDragPreAnnotation,
   endOfDragPreAnnotation,
   dragPreAnnotation,
@@ -48,11 +46,8 @@ const mapDispatchToProps = (dispatch) => {
     onDeleteAnnotation: (aix) => {
       dispatch(deleteAnnotation(aix));
     },
-    onPointMouseDown: (event) => {
-      dispatch(selectPoint({ event }));
-    },
-    onPointMouseUp: (event) => {
-      dispatch(deselectPoint({ event }));
+    onPointClick: (event) => {
+      dispatch(clickPoint({ event }));
     },
     onPointMouseEnter: (event) => {
       dispatch(enterPoint({ event }));
@@ -60,17 +55,14 @@ const mapDispatchToProps = (dispatch) => {
     onPointMouseLeave: (event) => {
       dispatch(leavePoint({ event }));
     },
-    onPolygonMouseDown: (event) => {
-      dispatch(selectPolygon({ event }));
+    onShapeClick: (event) => {
+      dispatch(clickShape({ event }));
     },
-    onPolygonMouseUp: (event) => {
-      dispatch(deselectPolygon({ event }));
+    onShapeMouseEnter: (event) => {
+      dispatch(enterShape({ event }));
     },
-    onPolygonMouseEnter: (event) => {
-      dispatch(enterPolygon({ event }));
-    },
-    onPolygonMouseLeave: (event) => {
-      dispatch(leavePolygon({ event }));
+    onShapeMouseLeave: (event) => {
+      dispatch(leaveShape({ event }));
     },
     onPreAnnotationMouseDown: (event) => {
       dispatch(beginToDragPreAnnotation({ event }));

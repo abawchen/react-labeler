@@ -20,14 +20,12 @@ const Annotation = ({
   hover,
   onLabelChange,
   onDeleteAnnotation,
-  onPointMouseDown,
-  onPointMouseUp,
+  onPointClick,
   onPointMouseEnter,
   onPointMouseLeave,
-  onPolygonMouseDown,
-  onPolygonMouseUp,
-  onPolygonMouseEnter,
-  onPolygonMouseLeave,
+  onShapeClick,
+  onShapeMouseEnter,
+  onShapeMouseLeave,
 }) => (
   <g
     className='ori'
@@ -48,10 +46,9 @@ const Annotation = ({
     <polygon
       data-aix={aix}
       points={getDisplayPoints(image, annotation.points)}
-      onMouseDown={onPolygonMouseDown}
-      onMouseUp={onPolygonMouseUp}
-      onMouseEnter={onPolygonMouseEnter}
-      onMouseLeave={onPolygonMouseLeave}
+      onClick={onShapeClick}
+      onMouseEnter={onShapeMouseEnter}
+      onMouseLeave={onShapeMouseLeave}
     />
     {
       annotation.points.map((point, index) =>
@@ -65,8 +62,7 @@ const Annotation = ({
           data-pix={index}
           cx={getDisplayX(image, point[0])}
           cy={getDisplayY(image, point[1])}
-          onMouseDown={onPointMouseDown}
-          onMouseUp={onPointMouseUp}
+          onClick={onPointClick}
           onMouseEnter={onPointMouseEnter}
           onMouseLeave={onPointMouseLeave}
         />
